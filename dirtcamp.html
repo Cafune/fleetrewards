@@ -1,14 +1,319 @@
 <head>
-  <title>dirtcamp</title>
+    <meta charset="utf-8">
+    <meta content=
+    "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    name="viewport">
+
+    <title>Bootcamp Rewards | DnG</title>
+    <!--<script src="common.js"></script>
+    <link href=
+    "http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
+    rel="stylesheet">
+    <link href='//fonts.googleapis.com/css?family=Open Sans:400,300,700' rel=
+    'stylesheet' type='text/css'>
+    <link href="common.css" rel="stylesheet">-->
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-target="#newauth-nav"
+                data-toggle="collapse" type="button"><span class=
+                "sr-only">Toggle navigation</span> <span class=
+                "icon-bar"></span><span class="icon-bar"></span><span class=
+                "icon-bar"></span></button> <a class="navbar-brand" href=
+                "#">J4LP <i class="fa fa-star"></i> Bootcamp Rewards</a>
+            </div>
 
-  {{> hello}}
+
+            <div class="collapse navbar-collapse" id="newauth-nav">
+                <ul class="nav navbar-nav navbar-right">
+                  {{#if currentUser}}
+                    <img src="https://image.eveonline.com/Character/{{ currentUser.services.eve.character.id }}_32.jpg" class="img-circle" alt="{{ currentUser.profile.name }}" style="float: right; margin-top: 10px; margin-right: 10px;">
+                  {{/if}}
+                  {{> loginButtons }}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container messages-container" id="alerts-container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-danger">
+                    <a class="close" data-dismiss="alert" href="#" title=
+                    "Close">&times;</a> <i class="fa fa-times"></i> Error
+                    submitting Fleet / error redeeming points / misc
+                    notifications
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12" style="text-align:center;">
+                <h2 style="line-height: 30%;">Redeemable Reward Points:
+                7.25</h2>
+
+
+                <h4><small>All rewards are based on current market price and
+                redeemed to Jita</small>
+                </h4>
+
+                <hr>
+            </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-4">
+          {{> fleetSubmission}}
+          </div>
+
+            <div class="col-md-4">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-book"></i>
+                        Recent Activity</h3>
+                    </div>
+
+
+                    <table class="table table-condensed" style="height:300px;">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+
+                                <th>Action</th>
+
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+
+
+                        <tbody>
+                            <tr class="warning">
+                                <td>11/19/2014</td>
+
+                                <td>Fleet</td>
+
+                                <td>Pending</td>
+                            </tr>
+
+
+                            <tr class="warning">
+                                <td>11/19/2014</td>
+
+                                <td>Hawk Purchase</td>
+
+                                <td>Pending</td>
+                            </tr>
+
+
+                            <tr class="danger">
+                                <td>11/15/2014</td>
+
+                                <td>Fleet</td>
+
+                                <td>Denied</td>
+                            </tr>
+
+
+                            <tr class="success">
+                                <td>11/14/2014</td>
+
+                                <td>Fleet</td>
+
+                                <td>Approved</td>
+                            </tr>
+
+
+                            <tr class="success">
+                                <td>11/13/2014</td>
+
+                                <td>Ishtar Purchase</td>
+
+                                <td>Delivered</td>
+                            </tr>
+
+
+                            <tr class="success">
+                                <td>11/11/2014</td>
+
+                                <td>+4 Implant Set</td>
+
+                                <td>Delivered</td>
+                            </tr>
+
+
+                            <tr class="success">
+                                <td>11/10/2014</td>
+
+                                <td>Fleet</td>
+
+                                <td>Approved</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="panel panel-success" style="height:340px;">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class=
+                        "fa fa-shopping-cart"></i> Rewards</h3>
+                    </div>
+
+
+                    <div class="btn-group btn-group-justified">
+                        <div class="btn-group">
+                            <button class="btn btn-default dropdown-toggle"
+                            data-toggle="dropdown" type="button">Doctrine
+                            Fittings <span class="caret"></span></button>
+
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#">Doctrine Fittings</a>
+                                </li>
+
+
+                                <li>
+                                    <a href="#">Hulls</a>
+                                </li>
+
+
+                                <li>
+                                    <a href="#">Implant Sets</a>
+                                </li>
+
+
+                                <li>
+                                    <a href="#">ISK</a>
+                                </li>
+
+
+                                <li>
+                                    <a href="#">Skillbooks</a>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                        <div class="btn-group">
+                            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">Show Affordable <span class="caret"></span></button>
+
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#">Show All</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <table class="table table-condensed table-striped">
+                        <thead>
+                            <tr>
+                                <th>Doctrine</th>
+
+                                <th>Price</th>
+
+                                <th>&nbsp;</th>
+                            </tr>
+                        </thead>
+
+
+                        <tbody>
+                            <tr>
+                                <td>Tengu - Slippery Pete</td>
+
+                                <td>15</td>
+
+                                <td><button class="btn btn-default btn-xs" type="submit">Buy</button>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>Ishtar - Armor</td>
+
+                                <td>10</td>
+
+                                <td><button class="btn btn-default btn-xs" type="submit">Buy</button>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>Ishtar - Shield</td>
+
+                                <td>11</td>
+
+                                <td><button class="btn btn-default btn-xs" type="submit">Buy</button>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>Megathron - Baltec</td>
+
+                                <td>14</td>
+
+                                <td><button class="btn btn-default btn-xs" type="submit">Buy</button>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>Apocalypse - Baltec</td>
+
+                                <td>12</td>
+
+                                <td><button class="btn btn-default btn-xs"
+                                type="submit">Buy</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="fleetSubmission">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-rocket"></i>
+            Fleet Submission</h3>
+        </div>
+        <table class="table" style="height:300px;">
+            <tbody>
+                <tr>
+                    <td>
+                        <form class="new-fleet">
+                            <div class="form-group">
+                                <label for="paplink">PAP Link</label> <input class="form-control" id="papLink" name="papLink" placeholder="Paste your PAP here" type="url">
+                            </div>
+                            <div class="form-group">
+                                <label for="ping">Ping</label>
+                                <input class="form-control" id="ping" name="ping" placeholder="Paste ping or fleet purpose" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label for="addl">Additional Information</label> <input class=
+                                "form-control" id="additionalInformation" name="additionalInformation" placeholder="Enter any additional information (optional)"
+                                type="text">
+                            </div>
+                            <button class="btn btn-default" type="submit">Submit</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </template>
