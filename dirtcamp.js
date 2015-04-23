@@ -1,5 +1,12 @@
 // dirtcamp.js.js
 Fleets = new Mongo.Collection("fleets");
+Rewards = new Mongo.Collection("rewards");
+
+// routes
+Router.map( function () {
+  this.route('home', {path: '/'} );
+  this.route('admin');
+});
 
 if (Meteor.isClient) {
   // get fleets
@@ -15,6 +22,12 @@ if (Meteor.isClient) {
   Template.fleetSubmission.helpers({
     counter: function () {
       return Session.get('counter');
+    }
+  });
+
+  Template.rewards.helpers({
+    rewards2: function () {
+      return Rewards.find({});
     }
   });
 
