@@ -9,15 +9,17 @@ Router.map( function () {
 });
 
 if (Meteor.isClient) {
+  // format dates
+  Template.registerHelper('formatDate', function(date) {
+    return moment(date).format('MM-DD-YYYY');
+  });
+  
   // get fleets
   Template.body.helpers({
     fleets: function () {
       return Fleets.find({});
     }
   });
-
-  // counter starts at 0
-  Session.setDefault('counter', 0);
 
   Template.fleetSubmission.helpers({
     counter: function () {
@@ -28,6 +30,13 @@ if (Meteor.isClient) {
   Template.rewards.helpers({
     rewards2: function () {
       return Rewards.find({});
+    }
+  });
+
+  Template.adminFleets.helpers({
+    fleets: function () {
+      //return Fleets.find({ status: { $eq: "pending" } });
+      return Fleets.find({});
     }
   });
 

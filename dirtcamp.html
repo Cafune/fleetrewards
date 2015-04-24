@@ -289,6 +289,16 @@
         </tr>
       </thead>
       <tbody>
+        {{#each fleets}}
+          <tr>
+            <td>{{formatDate modified}}</td>
+            <td>{{user_id}}</td>
+            <td>{{pap_link}}</td>
+            <td>{{ping}}</td>
+            <td>{{additional_information}}</td>
+            <td><button class="btn btn-success btn-xs" type="submit">Approve</button><button class="btn btn-danger btn-xs" type="submit">Deny</button></td>
+          </tr>
+        {{/each}}
         <tr>
           <td>12/01/14</td>
           <td>Abzde</td>
