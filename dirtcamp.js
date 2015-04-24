@@ -1,6 +1,7 @@
 // dirtcamp.js.js
-Fleets = new Mongo.Collection("fleets");
-Rewards = new Mongo.Collection("rewards");
+//Users = new Mongo.Collection('users');
+Fleets = new Mongo.Collection('fleets');
+Rewards = new Mongo.Collection('rewards');
 
 // routes
 Router.map( function () {
@@ -13,7 +14,7 @@ if (Meteor.isClient) {
   Template.registerHelper('formatDate', function(date) {
     return moment(date).format('MM-DD-YYYY');
   });
-  
+
   // get fleets
   Template.body.helpers({
     fleets: function () {
@@ -44,11 +45,11 @@ if (Meteor.isClient) {
     "submit form": function (event, template) {
     // This function is called when the new fleet form is submitted
 
-    var userId = "celmi";
+    var userId = 'celmi';
     var papLink = event.target.papLink.value;
     var ping = event.target.ping.value;
     var additionalInformation = event.target.additionalInformation.value;
-    var status = "pending";
+    var status = 'pending';
     var date = new Date();
 
     Fleets.insert({
@@ -62,9 +63,9 @@ if (Meteor.isClient) {
     });
 
     // Clear form
-    event.target.papLink.value = "";
-    event.target.ping.value = "";
-    event.target.additionalInformation.value = "";
+    event.target.papLink.value = '';
+    event.target.ping.value = '';
+    event.target.additionalInformation.value = '';
 
     // Prevent default form submit
     return false;
