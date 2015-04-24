@@ -63,22 +63,22 @@
             <h3 class="panel-title"><i class="fa fa-rocket"></i>
             Fleet Submission</h3>
         </div>
-        <table class="table" style="height:300px;">
+        <table class="table">
             <tbody>
                 <tr>
                     <td>
                         <form class="new-fleet">
                             <div class="form-group">
-                                <label for="paplink">PAP Link</label> <input class="form-control" id="papLink" name="papLink" placeholder="Paste your PAP here" type="url">
+                                <label for="paplink">PAP Link</label>
+                                <input class="form-control" id="papLink" name="papLink" placeholder="Paste your PAP here" type="url" required />
                             </div>
                             <div class="form-group">
                                 <label for="ping">Ping</label>
-                                <input class="form-control" id="ping" name="ping" placeholder="Paste ping or fleet purpose" type="text">
+                                <textarea class="form-control" id="ping" name="ping" placeholder="Paste ping or fleet purpose" type="text" rows="3" required></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="addl">Additional Information</label> <input class=
-                                "form-control" id="additionalInformation" name="additionalInformation" placeholder="Enter any additional information (optional)"
-                                type="text">
+                                <label for="addl">Additional Information</label>
+                                <textarea class="form-control" id="additionalInformation" name="additionalInformation" placeholder="Enter any additional information (optional)" type="text" rows="3"></textarea>
                             </div>
                             <button class="btn btn-default" type="submit">Submit</button>
                         </form>
@@ -89,17 +89,18 @@
     </div>
 </template>
 
-<template name="activity">
+<template name="fleetHistory">
   <div class="panel panel-success">
     <div class="panel-heading">
-      <h3 class="panel-title"><i class="fa fa-book"></i>Recent Activity</h3>
+      <h3 class="panel-title"><i class="fa fa-book"></i> Fleet History</h3>
     </div>
-    <table class="table table-condensed" style="height:300px;">
+    <table class="table table-condensed">
       <thead>
         <tr>
           <th>Date</th>
           <th>Action</th>
           <th>Status</th>
+          <th>Action</th>
         </tr>
       </thead>
         <tbody>
@@ -107,36 +108,63 @@
             <td>11/19/2014</td>
             <td>Fleet</td>
             <td>Pending</td>
-          </tr>
-          <tr class="warning">
-            <td>11/19/2014</td>
-            <td>Hawk Purchase</td>
-            <td>Pending</td>
+            <td><button class="btn btn-danger btn-xs" type="submit">Delete</button></td>
           </tr>
           <tr class="danger">
             <td>11/15/2014</td>
             <td>Fleet</td>
             <td>Denied</td>
+            <td><button class="btn btn-danger btn-xs" type="submit" disabled="disabled">Delete</button></td>
           </tr>
           <tr class="success">
             <td>11/14/2014</td>
             <td>Fleet</td>
             <td>Approved</td>
-          </tr>
-          <tr class="success">
-            <td>11/13/2014</td>
-            <td>Ishtar Purchase</td>
-            <td>Delivered</td>
-          </tr>
-          <tr class="success">
-            <td>11/11/2014</td>
-            <td>+4 Implant Set</td>
-            <td>Delivered</td>
+            <td><button class="btn btn-danger btn-xs" type="submit" disabled="disabled">Delete</button></td>
           </tr>
           <tr class="success">
             <td>11/10/2014</td>
             <td>Fleet</td>
             <td>Approved</td>
+            <td><button class="btn btn-danger btn-xs" type="submit" disabled="disabled">Delete</button></td>
+          </tr>
+        </tbody>
+    </table>
+  </div>
+</template>
+
+<template name="rewardHistory">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title"><i class="fa fa-book"></i> Reward History</h3>
+    </div>
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Action</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+        <tbody>
+          <tr class="warning">
+            <td>11/19/2014</td>
+            <td>Hawk Purchase</td>
+            <td>Pending</td>
+            <td><button class="btn btn-danger btn-xs" type="submit">Delete</button></td>
+          </tr>
+          <tr class="success">
+            <td>11/13/2014</td>
+            <td>Ishtar Purchase</td>
+            <td>Delivered</td>
+            <td><button class="btn btn-danger btn-xs" type="submit" disabled="disabled">Delete</button></td>
+          </tr>
+          <tr class="success">
+            <td>11/11/2014</td>
+            <td>+4 Implant Set</td>
+            <td>Delivered</td>
+            <td><button class="btn btn-danger btn-xs" type="submit" disabled="disabled">Delete</button></td>
           </tr>
         </tbody>
     </table>
@@ -144,13 +172,11 @@
 </template>
 
 <template name="rewards">
-  <div class="panel panel-success" style="height:340px;">
+  <div class="panel panel-success">
       <div class="panel-heading">
           <h3 class="panel-title"><i class=
           "fa fa-shopping-cart"></i> Rewards</h3>
       </div>
-
-
       <div class="btn-group btn-group-justified">
           <div class="btn-group">
               <button class="btn btn-default dropdown-toggle"
@@ -177,7 +203,7 @@
                   <th>Item</th>
                   <th>Type</th>
                   <th>Price</th>
-                  <th>Option</th>
+                  <th>Action</th>
               </tr>
           </thead>
           <tbody>
@@ -232,13 +258,14 @@
       <div class="col-md-4">
         {{> fleetSubmission}}
       </div>
-
-      <div class="col-md-4">
-        {{> activity}}
-      </div>
-
       <div class="col-md-4">
         {{> rewards}}
+      </div>
+      <div class="col-md-4">
+        {{> fleetHistory}}
+      </div>
+      <div class="col-md-4">
+        {{> rewardHistory}}
       </div>
     </div>
   </div>
