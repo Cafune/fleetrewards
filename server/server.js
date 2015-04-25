@@ -18,38 +18,21 @@ Accounts.validateNewUser(function (user) {
   var characterCorpId = json['eveapi']['result'][0]['rowset'][0]['row'][0]['$'].corporationID;
   console.log(characterId);
   console.log(characterCorpId);
-  if (dngCorpId == characterCorpId) {
-    console.log('same corps');
+
+  // check if they are in dng
+  if (dngCorpId != characterCorpId) {
+    // they're not in dng
+    throw new Meteor.Error(403, 'You must be in Dirt \'n\' Glitter');
+    return false
   }
-  else {
-    console.log('different corps');
-  }
-  return false;
-  /*if (user.username && user.username.length >= 3)
-    return true;
-  throw new Meteor.Error(403, "Username must have at least 3 characters");*/
+
+  // add profile fields
+  var date = new Date();
+  user['profile'].group = 'user';
+  user['profile'].corp_id = characterCorpId;
+  user['profile'].points = 0;
+  user['profile'].created = date;
+  user['profile'].modified = date;
+  return true;
+
 });
-
-/*Accounts.onCreateUser(function(options, user) {
-    //pass the surname in the options
-
-    user.profile['group'] = 'user';
-
-    return user;
-}
-
-var options = {
-    username: $('input#username')[0].value,
-    emails: [{
-        address: $('input#email')[0].value,
-        verified: false
-    }],
-    password: $('input#password')[0].value,
-    profile: {
-        surname: $('input#surname')
-    },
-};
-Accounts.createUser( options , function(err){
-    if( err ) $('div#errors').html( err.message );
-});
-*/
