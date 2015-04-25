@@ -12,3 +12,6 @@ zweizeichen:accounts-eve
 accounts-ui
 iron:router
 momentjs:moment
+http
+standard-app-packages
+xml2js
