@@ -6,9 +6,9 @@ Meteor.startup(function () {
 
 
 // Validate corp is correct, in this case DNG, 98224639
+// https://api.eveonline.com/eve/CharacterAffiliation.xml.aspx?ids=
 Accounts.validateNewUser(function (user) {
-  // https://api.eveonline.com/eve/CharacterAffiliation.xml.aspx?ids=
-  // Get corp id
+
   var dngCorpId = '98224639';
   var characterId = user['services']['eve']['character'].id;
   var url =  'https://api.eveonline.com/eve/CharacterAffiliation.xml.aspx?ids=';
@@ -16,8 +16,6 @@ Accounts.validateNewUser(function (user) {
   var xml = HTTP.call('GET', fullUrl);
   var json = XML2JS.parse(xml.content);
   var characterCorpId = json['eveapi']['result'][0]['rowset'][0]['row'][0]['$'].corporationID;
-  console.log(characterId);
-  console.log(characterCorpId);
 
   // check if they are in dng
   if (dngCorpId != characterCorpId) {

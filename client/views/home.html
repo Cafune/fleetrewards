@@ -14,7 +14,7 @@
         {{> fleetHistory}}
       </div>
       <div class="col-md-4">
-        {{> rewardHistory}}
+        {{> payoutHistory}}
       </div>
     </div>
   </div>
@@ -63,6 +63,74 @@
     </div>
 </template>
 
+<template name="fleetsAndPayouts">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title"><i class="fa fa-book"></i> History</h3>
+    </div>
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>ID</th>
+          <th>Action</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+        <tbody>
+          {{#each fleetsAndPayouts}}
+            <tr class="{{#if eq status 'Pending'}}warning{{else}}success{{/if}}">
+              <td>{{formatDate modified}}</td>
+              <td>{{_id}}</td>
+              <td>
+              {{#if pap_link}}
+                Fleet
+              {{else}}
+                Purchase
+              {{/if}}
+              </td>
+              <td>{{status}}</td>
+              <td>
+              {{#if eq status 'Pending'}}
+                <button class="btn btn-danger btn-xs" type="submit">Delete</button>
+              {{/if}}
+              </td>
+            </tr>
+          {{/each}}
+          <tr class="warning">
+            <td>11/19/2014</td>
+            <td>Fleet</td>
+            <td>Action</td>
+            <td>Pending</td>
+            <td><button class="btn btn-danger btn-xs" type="submit">Delete</button></td>
+          </tr>
+          <tr class="danger">
+            <td>11/15/2014</td>
+            <td>Fleet</td>
+            <td>Action</td>
+            <td>Denied</td>
+            <td></td>
+          </tr>
+          <tr class="success">
+            <td>11/14/2014</td>
+            <td>Fleet</td>
+            <td>Action</td>
+            <td>Approved</td>
+            <td></td>
+          </tr>
+          <tr class="success">
+            <td>11/10/2014</td>
+            <td>Fleet</td>
+            <td>Action</td>
+            <td>Approved</td>
+            <td></td>
+          </tr>
+        </tbody>
+    </table>
+  </div>
+</template>
+
 <template name="fleetHistory">
   <div class="panel panel-success">
     <div class="panel-heading">
@@ -72,12 +140,24 @@
       <thead>
         <tr>
           <th>Date</th>
-          <th>Action</th>
+          <th>ID</th>
           <th>Status</th>
           <th>Action</th>
         </tr>
       </thead>
         <tbody>
+          {{#each fleets}}
+            <tr class="{{#if eq status 'Pending'}}warning{{else}}success{{/if}}">
+              <td>{{formatDate modified}}</td>
+              <td>{{_id}}</td>
+              <td>{{status}}</td>
+              <td>
+              {{#if eq status 'Pending'}}
+                <button class="btn btn-danger btn-xs" type="submit">Delete</button>
+              {{/if}}
+              </td>
+            </tr>
+          {{/each}}
           <tr class="warning">
             <td>11/19/2014</td>
             <td>Fleet</td>
@@ -88,57 +168,74 @@
             <td>11/15/2014</td>
             <td>Fleet</td>
             <td>Denied</td>
-            <td><button class="btn btn-danger btn-xs" type="submit" disabled="disabled">Delete</button></td>
+            <td></td>
           </tr>
           <tr class="success">
             <td>11/14/2014</td>
             <td>Fleet</td>
             <td>Approved</td>
-            <td><button class="btn btn-danger btn-xs" type="submit" disabled="disabled">Delete</button></td>
+            <td></td>
           </tr>
           <tr class="success">
             <td>11/10/2014</td>
             <td>Fleet</td>
             <td>Approved</td>
-            <td><button class="btn btn-danger btn-xs" type="submit" disabled="disabled">Delete</button></td>
+            <td></td>
           </tr>
         </tbody>
     </table>
   </div>
 </template>
 
-<template name="rewardHistory">
+<template name="payoutHistory">
   <div class="panel panel-success">
     <div class="panel-heading">
-      <h3 class="panel-title"><i class="fa fa-book"></i> Reward History</h3>
+      <h3 class="panel-title"><i class="fa fa-book"></i> Payout History</h3>
     </div>
     <table class="table table-condensed">
       <thead>
         <tr>
           <th>Date</th>
-          <th>Action</th>
+          <th>Item</th>
+          <th>Type</th>
           <th>Status</th>
           <th>Action</th>
         </tr>
       </thead>
         <tbody>
+          {{#each payouts}}
+            <tr class="{{#if eq status 'Pending'}}warning{{else}}success{{/if}}">
+              <td>{{formatDate modified}}</td>
+              <td>{{reward_name}}</td>
+              <td>{{reward_type}}</td>
+              <td>{{status}}</td>
+              <td>
+              {{#if eq status 'Pending'}}
+                <button class="btn btn-danger btn-xs" type="submit">Delete</button>
+              {{/if}}
+              </td>
+            </tr>
+          {{/each}}
           <tr class="warning">
             <td>11/19/2014</td>
-            <td>Hawk Purchase</td>
+            <td>Apocalypse - Baltec</td>
+            <td>Fleet Fit</td>
             <td>Pending</td>
             <td><button class="btn btn-danger btn-xs" type="submit">Delete</button></td>
           </tr>
           <tr class="success">
             <td>11/13/2014</td>
-            <td>Ishtar Purchase</td>
+            <td>Ishtar - Shield</td>
+            <td>Fleet Fit</td>
             <td>Delivered</td>
-            <td><button class="btn btn-danger btn-xs" type="submit" disabled="disabled">Delete</button></td>
+            <td></td>
           </tr>
           <tr class="success">
             <td>11/11/2014</td>
-            <td>+4 Implant Set</td>
+            <td>+4 Implants</td>
+            <td>Implant Set</td>
             <td>Delivered</td>
-            <td><button class="btn btn-danger btn-xs" type="submit" disabled="disabled">Delete</button></td>
+            <td></td>
           </tr>
         </tbody>
     </table>
