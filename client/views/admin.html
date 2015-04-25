@@ -1,0 +1,130 @@
+<!-- admin.html -->
+
+<template name="admin">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12" style="text-align:center;">
+        <h2 style="line-height: 30%;">Total value unredeemed points: 500,000,000 ISK</h2>
+        <h2>ISK in Bootcamp Wallet: 725,000,000 ISK</h2>
+        <hr>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        {{> adminFleets}}
+      </div>
+      <div class="col-md-6">
+        {{> adminPayouts}}
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="adminFleets">
+  <div class="panel panel-success" style="height:340px;">
+    <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-rocket"></i>
+        Logged Fleets</h3>
+    </div>
+    <table class="table table-condensed table-striped">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Name</th>
+          <th>PAP Link</th>
+          <th>Ping</th>
+          <th>Additional Info</th>
+          <th>Action/Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each fleets}}
+          <tr>
+            <td>{{formatDate modified}}</td>
+            <td>{{username}}</td>
+            <td>{{pap_link}}</td>
+            <td>{{ping}}</td>
+            <td>{{additional_information}}</td>
+            <td><button class="btn btn-success btn-xs" type="submit">Approve</button><button class="btn btn-danger btn-xs" type="submit">Deny</button></td>
+          </tr>
+        {{/each}}
+        <tr>
+          <td>12/01/14</td>
+          <td>Abzde</td>
+          <td>paplink</td>
+          <td>pingtext</td>
+          <td>addlinfo</td>
+          <td><button class="btn btn-success btn-xs" type="submit">Approve</button><button class="btn btn-danger btn-xs" type="submit">Deny</button></td>
+        </tr>
+        <tr>
+          <td>11/15/14</td>
+          <td>Nivlac Hita</td>
+          <td>paplink</td>
+          <td>pingtext</td>
+          <td>addlinfo</td>
+          <td><button class="btn btn-success btn-xs" type="submit">Approve</button><button class="btn btn-danger btn-xs" type="submit">Deny</button></td>
+        </tr>
+        <tr class="success">
+          <td>12/27/14</td>
+          <td>Inspector Gair</td>
+          <td>paplink</td>
+          <td>pingtext</td>
+          <td>addlinfo</td>
+          <td>Approved</td>
+        </tr>
+        <tr class="danger">
+          <td>12/25/14</td>
+          <td>Tujiko Noriko</td>
+          <td>paplink</td>
+          <td>pingtext</td>
+          <td>addlinfo</td>
+          <td>Denied</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</template>
+
+<template name="adminPayouts">
+  <div class="panel panel-success" style="height:340px;">
+    <div class="panel-heading">
+        <h3 class="panel-title"><i class=
+        "fa fa-shopping-cart"></i> Payout Requests</h3>
+    </div>
+
+    <table class="table table-condensed table-striped">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Name</th>
+          <th>Request</th>
+          <th>Cost</th>
+          <th>Action/Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>11/30/14</td>
+          <td>Otsdarva IV</td>
+          <td>+4 Implant Set</td>
+          <td>110,000,000 ISK</td>
+          <td><button class="btn btn-info btn-xs" type="submit">Fill Order</button></td>
+        </tr>
+        <tr>
+          <td>11/29/14</td>
+          <td>Vadrin Hegirin</td>
+          <td>Doctrine Ishtar - Armor</td>
+          <td>240,000,000 ISK</td>
+          <td><button class="btn btn-info btn-xs" type="submit">Fill Order</button></td>
+        </tr>
+        <tr class="success">
+          <td>11/27/14</td>
+          <td>Ipoopedbad Ernaga</td>
+          <td>Napoc Hull</td>
+          <td>145,000,000 ISK</td>
+          <td>Order FIlled</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+</template>
