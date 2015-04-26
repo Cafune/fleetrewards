@@ -2,7 +2,7 @@
 
 Template.adminFleets.helpers({
   fleets: function () {
-    var fleets = Fleets.find().fetch();
+    var fleets = Fleets.find({}, {sort: {modified: -1}}).fetch();
     for (var i = 0; i < fleets.length; i++) {
       var user = Meteor.users.findOne(fleets[i].user_id);
       fleets[i].user_name = user.profile.name;
@@ -13,13 +13,14 @@ Template.adminFleets.helpers({
 
 Template.adminPayouts.helpers({
   payouts: function () {
-    var payouts = Payouts.find().fetch();
+    var payouts = Payouts.find({}, {sort: {modified: -1}}).fetch();
     for (var i = 0; i < payouts.length; i++) {
       var user = Meteor.users.findOne(payouts[i].user_id);
       payouts[i].user_name = user.profile.name;
       var reward = Rewards.findOne(payouts[i].reward_id);
       payouts[i].reward_name = reward.name;
       payouts[i].reward_type = reward.type;
+      payouts[i].isk_cost = numeral(payouts[i].isk_cost).format('0,0.00');
     }
     return payouts;
   }

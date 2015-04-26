@@ -24,7 +24,7 @@
 <template name="points">
   <div class="row">
     <div class="col-md-12" style="text-align:center;">
-      <h2 style="line-height: 30%;">Redeemable Reward Points: 7.25</h2>
+      <h2 style="line-height: 30%;">Redeemable Reward Points: {{points}}</h2>
       <h4><small>All rewards are based on current market price and redeemed to Jita</small></h4>
       <hr>
     </div>
@@ -158,12 +158,6 @@
               </td>
             </tr>
           {{/each}}
-          <tr class="warning">
-            <td>11/19/2014</td>
-            <td>Fleet</td>
-            <td>Pending</td>
-            <td><button class="btn btn-danger btn-xs" type="submit">Delete</button></td>
-          </tr>
           <tr class="danger">
             <td>11/15/2014</td>
             <td>Fleet</td>
@@ -278,12 +272,12 @@
               </tr>
           </thead>
           <tbody>
-            {{#each rewards2}}
+            {{#each rewards}}
               <tr>
                 <td>{{name}}</td>
                 <td>{{type}}</td>
-                <td>{{price}}</td>
-                <td><button class="btn btn-default btn-xs" type="submit">Buy</button></td>
+                <td>{{point_cost}}</td>
+                <td><button class="btn btn-default btn-xs" name="{{_id}}" type="submit">Buy</button></td>
               </tr>
             {{/each}}
               <tr>

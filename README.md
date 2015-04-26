@@ -12,3 +12,5 @@ meteor add accounts-ui
 meteor add zweizeichen:accounts-eve
 
 meteor add http
+
+meteor add numeral:numeral
