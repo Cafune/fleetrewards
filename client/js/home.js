@@ -39,6 +39,9 @@ Template.fleetSubmission.events({
   event.target.ping.value = '';
   event.target.additionalInformation.value = '';
 
+  // display notification
+  toastr.success('Fleet successfully submitted', 'Fleet Submission');
+
   // Prevent default form submit
   return false;
 }
@@ -58,7 +61,7 @@ Template.rewards.events({
     var userId = user._id;
     if (user['profile'].points - this.point_cost < 0) {
       // don't have enough points
-      return false;
+      return toastr.error('You do not have enough points', 'Rewards');;
     }
     // add a new payout
     var status = 'Pending';
@@ -75,6 +78,9 @@ Template.rewards.events({
     // remove points from user
     var points = user['profile'].points - this.point_cost;
     Meteor.users.update(userId, {$set: {'profile.points': points}});
+
+    // display notification
+    toastr.success(this.name + ' successfully purchased', 'Rewards');
 
   }
 });
@@ -116,6 +122,7 @@ Template.payoutHistory.events({
     // delete a pending payout
     if (this.status == 'Pending') {
       Payouts.remove(this._id);
+      toastr.success('Payout successfully deleted', 'Payout History');
     }
     // restore points to user
     var user = Meteor.user();
@@ -132,6 +139,7 @@ Template.fleetHistory.events({
     // delete a pending fleet
     if (this.status == 'Pending') {
       Fleets.remove(this._id);
+      toastr.success('Fleet successfully deleted', 'Fleet History');
     }
 
   }
