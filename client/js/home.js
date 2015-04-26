@@ -3,7 +3,7 @@
 Template.points.helpers({
   points: function () {
     var user = Meteor.user();
-    return user.profile.points;
+    return user && user.profile && user.profile.points;
   }
 });
 
