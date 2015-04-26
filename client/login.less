@@ -1,0 +1,82 @@
+@import url(http://fonts.googleapis.com/css?family=Merriweather+Sans);
+
+@dkgrey: #8C8F96;
+@ltgrey: #C2C6CF;
+
+body {
+  background: #0b0b0b;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.left, .right{
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: -30%;
+  bottom: 0;
+  background: @ltgrey;
+  background-image: url(./img/kesha.jpg);
+  background-position: 50% 50%;
+  background-size: cover;
+}
+
+.right {
+  left: 50%;
+  display: none;
+}
+
+.login {
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+  margin: 50vh auto;
+  padding: 30px 20px 70px 20px;
+  background: #FFF;
+  z-index: 2;
+  left: 20%;
+  -webkit-transform: translateY(-50%);  
+  -moz-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+
+  /*border-top: 1px solid #7C4;     
+  box-shadow: 0 5px 10px rgba(0,0,0,.25); */
+  &:after, &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #FFF;
+    z-index: -1;
+    -webkit-transform: skewY(-20deg);
+    box-shadow: 0 5px 10px rgba(0,0,0,.25);
+  }
+  
+  &:before {
+    -webkit-transform: skewY(20deg);
+    background: @ltgrey;
+  }
+}
+
+
+.login img {
+  width: 100%;
+}
+
+@media screen and (max-width:440px) {
+//  .left, .right {
+//    right: 0;
+//    left: 0;
+//    bottom: auto;
+//    width: 100vw;
+//    height: 50vh;
+//  }
+//  .right {
+//    top: 50%;
+//  }
+}
+
