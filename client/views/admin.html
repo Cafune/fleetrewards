@@ -2,7 +2,6 @@
 
 <template name="admin">
   {{> navbar}}
-  {{> alert}}
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12" style="text-align:center;">
@@ -12,14 +11,17 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-12">
         {{> adminFleets}}
       </div>
-      <div class="col-md-6">
+    </div>
+    <div class="row">
+      <div class="col-md-12">
         {{> adminPayouts}}
       </div>
     </div>
   </div>
+  {{> modal}}
 </template>
 
 <template name="adminFleets">
@@ -47,57 +49,13 @@
             <td>{{pap_link}}</td>
             <td>{{ping}}</td>
             <td>{{additional_information}}</td>
-            <td><div class="btn-group">
-              <button type="button" class="btn btn-success btn-xs">Approve</button>
-              <button type="button" class="btn btn-success btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-              <span class="caret"></span>
-              <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#">1.5 Points</a></li>
-              <li><a href="#">2 Points</a></li>
-              <li><a href="#">2.5 Points</a></li>
-              <li><a href="#">3 Points</a></li>
-            </ul>
-          </div>
-            <button class="btn btn-danger btn-xs" type="submit">Deny</button></td>
+            <td><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">Launch modal</button></td>
           </tr>
         {{/each}}
-        <tr>
-          <td>12/01/14</td>
-          <td>Abzde</td>
-          <td>paplink</td>
-          <td>pingtext</td>
-          <td>addlinfo</td>
-          <td><button class="btn btn-success btn-xs" type="submit">Approve</button><button class="btn btn-danger btn-xs" type="submit">Deny</button></td>
-        </tr>
-        <tr>
-          <td>11/15/14</td>
-          <td>Nivlac Hita</td>
-          <td>paplink</td>
-          <td>pingtext</td>
-          <td>addlinfo</td>
-          <td><button class="btn btn-success btn-xs" type="submit">Approve</button><button class="btn btn-danger btn-xs" type="submit">Deny</button></td>
-        </tr>
-        <tr class="success">
-          <td>12/27/14</td>
-          <td>Inspector Gair</td>
-          <td>paplink</td>
-          <td>pingtext</td>
-          <td>addlinfo</td>
-          <td>Approved</td>
-        </tr>
-        <tr class="danger">
-          <td>12/25/14</td>
-          <td>Tujiko Noriko</td>
-          <td>paplink</td>
-          <td>pingtext</td>
-          <td>addlinfo</td>
-          <td>Denied</td>
-        </tr>
       </tbody>
     </table>
   </div>
+  <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal">Launch modal</button>
 </template>
 
 <template name="adminPayouts">
@@ -160,5 +118,43 @@
         </tr>
       </tbody>
     </table>
+</div>
+</template>
+
+<template name="modal">
+  <div id="modal" role="dialog" class="modal hide fade" tabindex="-1" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <h3>Viewing {{user_name}}'s Submission</h3>
+    </div>
+    <div class="modal-body">
+      <b>PAP Link</b>
+      <div class="well">
+        <p>{{pap_link}}</p>
+      </div>
+      <b>Ping</b>
+      <div class="well">
+        <p>{{ping}}</p>
+      </div>
+      <b>Additional Information</b>
+      <div class="well">
+        <p>{{additional_information}}</p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="btn-group">
+        <button type="button" class="btn btn-success btn-xs" data-dismiss="modal">Approve</button>
+        <button type="button" class="btn btn-success btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+        <span class="caret"></span>
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="#" data-dismiss="modal">1.5 Points</a></li>
+        <li><a href="#" data-dismiss="modal">2 Points</a></li>
+      </ul>
+    </div>
+    <button class="btn btn-danger btn-xs" type="submit" data-dismiss="modal">Deny</button>
+    <button type="button" data-dismiss="modal">Close</button>
+  </div>
 </div>
 </template>
