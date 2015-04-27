@@ -5,7 +5,7 @@ Template.adminFleets.helpers({
     var fleets = Fleets.find({}, {sort: {modified: -1}}).fetch();
     for (var i = 0; i < fleets.length; i++) {
       var user = Meteor.users.findOne(fleets[i].user_id);
-      fleets[i].user_name = user.profile.name;
+      fleets[i].user_name = user && user.profile && user.profile.name;;
     }
     return fleets;
   }
