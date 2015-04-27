@@ -18,6 +18,10 @@ meteor add momentjs:moment
 
 meteor add twbs:bootstrap
 
+// font-awesome
+
+meteor add fortawesome:fontawesome
+
 // accounts
 
 meteor add accounts-ui
