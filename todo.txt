@@ -1,0 +1,25 @@
+# major issues
+1. Assign ISK value to points? where to store this
+2. Track dirtcamp wallet somehow
+
+# user side
+1. top-right user name needs to be a dropdown, include link to user profile
+2. user profile page
+3. full payout historu page | sort, search
+4. full fleet history page | sort, search
+5. home page payout history and fleet history, need to show all pending, last 3 approved or denied
+
+# admin side
+1. Side nav bar | 'Fleets and Payouts', 'Rewards', 'Users', 'Fleet History', 'Reward History'
+2. Rewards page | view, add, edit, delete
+3. Users page | view, edit (delete?)
+4. Fleet history page | sort, search
+5. Reward history page | sort, search
+6. admin page, logged fleets and payout requests need to only show pending?
+
+# backend side
+1. roles and permissions
+2. meteor remove insecure
+2.1 define methods
+3. meteor remove autopublish
+3.1 subscribes and publishes
