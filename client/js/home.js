@@ -72,6 +72,7 @@ Template.rewards.events({
     // add a new payout
     var status = 'Pending';
     var date = new Date(); // current time
+    var points = user['profile'].points - this.point_cost;
 
     Payouts.insert({
       user_id: userId,
@@ -81,13 +82,22 @@ Template.rewards.events({
       status: status,
       created: date,
       modified: date
-    });
-    // remove points from user
-    var points = user['profile'].points - this.point_cost;
-    Meteor.users.update(userId, {$set: {'profile.points': points}});
+    }, function(error, result) {
+      if (result == false) {
+        // insert failed
+        toastr.error(error.message, 'Rewards Error');
+      }
+      else {
+        // insert succeeded
+        // remove points from user
+        console.log(points);
+        Meteor.users.update(userId, {$set: {'profile.points': points}});
 
-    // display notification
-    toastr.success(this.name + ' successfully purchased', 'Rewards');
+        // display notification
+        toastr.success(this.name + ' successfully purchased', 'Rewards');
+      }
+
+    });
 
   }
 });
@@ -129,7 +139,7 @@ Template.payoutHistory.events({
     // delete a pending payout
     if (this.status == 'Pending') {
       Payouts.remove(this._id);
-      toastr.success('Payout successfully deleted', 'Payout History');
+      toastr.success('Payout successfully deleted and refunded', 'Payout History');
     }
     // restore points to user
     var user = Meteor.user();
