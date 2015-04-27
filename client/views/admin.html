@@ -47,7 +47,20 @@
             <td>{{pap_link}}</td>
             <td>{{ping}}</td>
             <td>{{additional_information}}</td>
-            <td><button class="btn btn-success btn-xs" type="submit">Approve</button><button class="btn btn-danger btn-xs" type="submit">Deny</button></td>
+            <td><div class="btn-group">
+              <button type="button" class="btn btn-success">Approve</button>
+              <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              <span class="caret"></span>
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">1.5 Points</a></li>
+              <li><a href="#">2 Points</a></li>
+              <li><a href="#">2.5 Points</a></li>
+              <li><a href="#">3 Points</a></li>
+            </ul>
+          </div>
+            <button class="btn btn-danger btn-xs" type="submit">Deny</button></td>
           </tr>
         {{/each}}
         <tr>
