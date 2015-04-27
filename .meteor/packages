@@ -17,3 +17,4 @@ standard-app-packages
 xml2js
 numeral:numeral
 chrismbeckett:toastr
+zimme:iron-router-active

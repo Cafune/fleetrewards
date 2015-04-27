@@ -6,6 +6,10 @@ Meteor.js
 
 meteor add iron:router
 
+// active nav
+
+meteor add zimme:iron-router-active
+
 // date formatting
 
 meteor add momentjs:moment

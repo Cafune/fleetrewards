@@ -27,8 +27,8 @@
       </div>
       <div class="collapse navbar-collapse" id="newauth-nav">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="/">Home</a></li>
-          <li><a href="{{ pathFor 'admin' }}">Admin</a></li>
+          <li class="{{isActiveRoute regex='home'}}"><a href="/">Home</a></li>
+          <li class="{{isActiveRoute regex='admin'}}"><a href="{{ pathFor 'admin' }}">Admin</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           {{#if currentUser}}
