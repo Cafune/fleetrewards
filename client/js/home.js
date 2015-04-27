@@ -32,17 +32,23 @@ Template.fleetSubmission.events({
     status: status,
     created: date,
     modified: date
+  }, function(error, result) {
+    if (result == false) {
+      // insert failed
+      toastr.error(error.message, 'Fleet Submission');
+    }
+    else {
+      // insert succeeded
+      // Clear form
+      event.target.papLink.value = '';
+      event.target.ping.value = '';
+      event.target.additionalInformation.value = '';
+
+      // display notification
+      toastr.success('Fleet successfully submitted', 'Fleet Submission');
+    }
   });
-
-  // Clear form
-  event.target.papLink.value = '';
-  event.target.ping.value = '';
-  event.target.additionalInformation.value = '';
-
-  // display notification
-  toastr.success('Fleet successfully submitted', 'Fleet Submission');
-
-  // Prevent default form submit
+  // Prevent form submit
   return false;
 }
 });
@@ -66,6 +72,7 @@ Template.rewards.events({
     // add a new payout
     var status = 'Pending';
     var date = new Date(); // current time
+
     Payouts.insert({
       user_id: userId,
       reward_id: this._id,

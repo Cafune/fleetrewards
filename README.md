@@ -10,6 +10,7 @@ Meteor.js
 * [meteor add http](https://atmospherejs.com/meteor/http) - remote http get, push, etc
 * [meteor add numeral:numeral](https://atmospherejs.com/numeral/numeral) - number formatting
 * [meteor add chrismbeckett:toastr](https://atmospherejs.com/chrismbeckett/toastr) - notifications
+* [meteor add aldeed:collection2](https://atmospherejs.com/aldeed/collection2) - schema validation
 
 # Steps
 ```sh
