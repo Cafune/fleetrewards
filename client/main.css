@@ -6,6 +6,14 @@
     height: 35px;
 }
 
+.login-display-name {
+  color: #eee;
+}
+
 #login-buttons {
   margin-top: 11px;
+}
+
+.points {
+  font-size: inherit;
 }

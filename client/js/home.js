@@ -1,5 +1,9 @@
 // home.js
 
+Template.home.rendered = function() {
+  $('[data-toggle="tooltip"]').tooltip() //initialize all tooltips in this template
+};
+
 Template.points.helpers({
   points: function () {
     var user = Meteor.user();
