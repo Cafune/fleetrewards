@@ -2,7 +2,6 @@
 
 <template name="home">
   {{> navbar}}
-  {{> alert}}
   <div class="container-fluid">
     {{> points}}
     <div class="row">
@@ -11,12 +10,10 @@
       </div>
       <div class="col-md-4">
         {{> rewards}}
+        {{> payoutHistory}}
       </div>
       <div class="col-md-4">
         {{> fleetHistory}}
-      </div>
-      <div class="col-md-4">
-        {{> payoutHistory}}
       </div>
     </div>
   </div>
