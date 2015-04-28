@@ -17,3 +17,17 @@
 .points {
   font-size: inherit;
 }
+
+#profile-picture {
+  margin-top: 6px;
+  margin-right: 5px;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+ }
+
+.navbar-text {
+  margin-top: 13px;
+  margin-bottom: 11px;
+}

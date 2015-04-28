@@ -14,6 +14,15 @@ Template.registerHelper('eq', function(v1, v2, options) {
   }
 });
 
+Template.userNav.events({
+  'click #profile': function (event, template) {
+    Router.go('profile');
+  },
+  'click #logout': function (event, template) {
+    Meteor.logout();
+  }
+});
+
 toastr.options = {
   "closeButton": false,
   "debug": false,

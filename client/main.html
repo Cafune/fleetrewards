@@ -32,11 +32,22 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           {{#if currentUser}}
-            <img src="https://image.eveonline.com/Character/{{ currentUser.services.eve.character.id }}_32.jpg" class="img-circle" alt="{{ currentUser.profile.name }}" style="margin-right: 10px;">
+            {{> userNav}}
           {{/if}}
-          {{> loginButtons }}
         </ul>
       </div>
     </div>
   </nav>
+</template>
+
+<template name="userNav">
+  <li id="profile-picture"><img src="https://image.eveonline.com/Character/{{ currentUser.services.eve.character.id }}_32.jpg" class="img-circle" alt="{{ currentUser.profile.name }}"></li>
+  <li><p class="navbar-text">{{currentUser.profile.name}}</p></li>
+  <!--<li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{currentUser.profile.name}} <span class="caret"></span></a>
+    <ul class="dropdown-menu" role="menu">
+      <li id="profile"><a href="#">Profile</a></li>
+    </ul>
+  </li>-->
+  <li id="logout"><a href="#">Logout</a></li>
 </template>
