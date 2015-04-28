@@ -2,6 +2,32 @@
 
 Meteor.startup(function () {
   // code to run on server at startup
+  var corps = Corporations.find({}).fetch();
+  if (corps.length < 1) {
+    var accountID = '58106738';
+    var keyID = '4331977';
+    var vCode = 'sWaCfhnYPEilkeLgdyvCGpVkzTk8l422Gml6zKGRIw9CGdiJD4ABclCuJ33180mU';
+    var url =  'https://api.eveonline.com/corp/AccountBalance.xml.aspx?keyID=' + keyID + '&vCode=' + vCode;
+    var xml = HTTP.call('GET', url);
+    var json = XML2JS.parse(xml.content);
+    var balance = 0;
+    for (var i = 0; i < json['eveapi']['result'][0]['rowset'][0]['row'].length; i++) {
+      if (json['eveapi']['result'][0]['rowset'][0]['row'][i]['$'].accountID == accountID) {
+        balance = json['eveapi']['result'][0]['rowset'][0]['row'][i]['$'].balance;
+      }
+    }
+    var date = new Date();
+    var dng = {
+      corp_name: 'Dirt \'n\' Glitter',
+      corp_ticker: 'D-N-G',
+      wallet: {
+        balance: balance
+      },
+      created: date,
+      modified: date
+    }
+    Corporations.insert(dng);
+  }
 });
 
 
@@ -33,4 +59,22 @@ Accounts.validateNewUser(function (user) {
   user['profile'].modified = date;
   return true;
 
+});
+
+Meteor.methods({
+  /*getWallet: function () {
+    var accountID = '58106738';
+    var keyID = '4331977';
+    var vCode = 'sWaCfhnYPEilkeLgdyvCGpVkzTk8l422Gml6zKGRIw9CGdiJD4ABclCuJ33180mU';
+    var url =  'https://api.eveonline.com/corp/AccountBalance.xml.aspx?keyID=' + keyID + '&vCode=' + vCode;
+    var xml = HTTP.call('GET', url);
+    var json = XML2JS.parse(xml.content);
+    var wallet = 0;
+    for (var i = 0; i < json['eveapi']['result'][0]['rowset'][0]['row'].length; i++) {
+      if (json['eveapi']['result'][0]['rowset'][0]['row'][i]['$'].accountID == accountID) {
+        wallet = json['eveapi']['result'][0]['rowset'][0]['row'][i]['$'].balance;
+      }
+    }
+    console.log(wallet);
+  }*/
 });
