@@ -83,7 +83,7 @@
   overflow-y: visible !important;
 }
 
-#modal label {
+#modal label, .new-fleet label {
   font-weight: bold;
 }
 
