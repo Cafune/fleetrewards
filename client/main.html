@@ -28,12 +28,12 @@
       <div class="collapse navbar-collapse" id="newauth-nav">
         <ul class="nav navbar-nav">
           <li class="{{isActiveRoute regex='home'}}"><a href="/">Home</a></li>
-<li class="dropdown {{isActiveRoute regex='pending|rewards|usercp|fleethistory|payouthistory'}}">
+<li class="dropdown {{isActiveRoute regex='pending|rewardcp|users|fleethistory|payouthistory'}}">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin Panel <span class="caret"></span></a>
   <ul class="dropdown-menu" role="menu">
     <li><a href="{{ pathFor 'pending' }}">Pending Submissions</a></li>
-    <li><a href="{{ pathFor 'rewards' }}">Edit Rewards</a></li>
-    <li><a href="{{ pathFor 'usercp' }}">User Control Panel</a></li>
+    <li><a href="{{ pathFor 'rewardcp' }}">Edit Rewards</a></li>
+    <li><a href="{{ pathFor 'users' }}">Users</a></li>
     <li class="divider"></li>
     <li><a href="{{ pathFor 'fleethistory' }}">Fleet History</a></li>
     <li><a href="{{ pathFor 'payouthistory' }}">Payout History</a></li>
