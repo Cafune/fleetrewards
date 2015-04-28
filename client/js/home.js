@@ -22,6 +22,7 @@ Template.fleetSubmission.events({
   // This function is called when the new fleet form is submitted
 
   var userId = Meteor.userId();
+  var fleetName = event.target.fleetName.value;
   var papLink = event.target.papLink.value;
   var ping = event.target.ping.value;
   var additionalInformation = event.target.additionalInformation.value;
@@ -30,6 +31,7 @@ Template.fleetSubmission.events({
 
   Fleets.insert({
     user_id: userId,
+    fleet_name: fleetName,
     pap_link: papLink,
     ping: ping,
     additional_information: additionalInformation,

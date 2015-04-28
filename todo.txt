@@ -23,3 +23,6 @@
 2.1 define methods
 3. meteor remove autopublish
 3.1 subscribes and publishes
+4. login check their corp
+
+#future wish list

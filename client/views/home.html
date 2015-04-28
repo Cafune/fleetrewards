@@ -43,15 +43,15 @@
                         <form class="new-fleet">
                           <div class="form-group">
                             <label for="fleetname">Fleet Name</label>
-                            <input class="form-control" id="fleetname" name="fleetname" placeholder="Name your fleet (optional)" type="text"/>
+                            <input class="form-control" id="fleetname" name="fleetName" placeholder="Name your fleet (optional)" type="text"/>
                           </div>
                             <div class="form-group">
                                 <label for="paplink">PAP Link</label>
-                                <input class="form-control" id="papLink" name="papLink" placeholder="Paste your PAP here" type="url" required />
+                                <input class="form-control" id="papLink" name="papLink" placeholder="Paste your PAP here (required)" type="url" required />
                             </div>
                             <div class="form-group">
                                 <label for="ping">Ping</label>
-                                <textarea class="form-control" id="ping" name="ping" placeholder="Paste ping or fleet purpose" type="text" rows="3" required></textarea>
+                                <textarea class="form-control" id="ping" name="ping" placeholder="Paste ping or fleet purpose (required)" type="text" rows="3" required></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="addl">Additional Information</label>
@@ -143,7 +143,8 @@
       <thead>
         <tr>
           <th>Date</th>
-          <th>ID</th>
+          <th>Fleet Name</th>
+          <th>Points</th>
           <th>Status</th>
           <th>Action</th>
         </tr>
@@ -152,7 +153,14 @@
           {{#each fleets}}
             <tr class="{{#if eq status 'Pending'}}warning{{else}}success{{/if}}">
               <td>{{formatDate modified}}</td>
-              <td>{{_id}}</td>
+              <td>{{fleet_name}}</td>
+              <td>
+              {{#if eq points null}}
+                Pending
+              {{else}}
+                {{points}}
+              {{/if}}
+              </td>
               <td>{{status}}</td>
               <td>
               {{#if eq status 'Pending'}}
@@ -163,19 +171,22 @@
           {{/each}}
           <tr class="danger">
             <td>11/15/2014</td>
-            <td>Fleet</td>
+            <td>Bla bla</td>
+            <td>1</td>
             <td>Denied</td>
             <td></td>
           </tr>
           <tr class="success">
             <td>11/14/2014</td>
-            <td>Fleet</td>
+            <td>Charlie</td>
+            <td>1</td>
             <td>Approved</td>
             <td></td>
           </tr>
           <tr class="success">
             <td>11/10/2014</td>
-            <td>Fleet</td>
+            <td>Bravo</td>
+            <td>1.5</td>
             <td>Approved</td>
             <td></td>
           </tr>
