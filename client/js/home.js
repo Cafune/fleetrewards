@@ -11,12 +11,6 @@ Template.points.helpers({
   }
 });
 
-Template.fleetSubmission.helpers({
-  counter: function () {
-    return Session.get('counter');
-  }
-});
-
 Template.fleetSubmission.events({
   "submit form": function (event, template) {
   // This function is called when the new fleet form is submitted
@@ -108,28 +102,28 @@ Template.rewards.events({
   }
 });
 
-Template.fleetsAndPayouts.helpers({
-  fleetsAndPayouts: function() {
-    var fleets = Fleets.find({user_id: Meteor.userId()}).fetch();
-    var payouts = Payouts.find({user_id: Meteor.userId()}).fetch();
-    var together = fleets.concat(payouts);
-    //return _.sortBy(together, function(together) {
-      //return together.modified;
-    //});
-    together =  _.sortBy(together, 'modified');
-    return together.reverse();
-  }
-});
-
 Template.fleetHistory.helpers({
-  fleets: function () {
-    return Fleets.find({user_id: Meteor.userId()}, {sort: {modified: -1}}).fetch();
+  pendingFleets: function () {
+    return Fleets.find({user_id: Meteor.userId(), status: 'Pending'}, {sort: {modified: -1}}).fetch();
+  },
+
+  lastThreeFleets: function () {
+    return Fleets.find({user_id: Meteor.userId(), status: {$ne: 'Pending'}}, {sort: {modified: -1}, limit: 3}).fetch();
   }
 });
 
 Template.payoutHistory.helpers({
-  payouts: function () {
-    var payouts = Payouts.find({user_id: Meteor.userId()}, {sort: {modified: -1}}).fetch();
+  pendingPayouts: function () {
+    var payouts = Payouts.find({user_id: Meteor.userId(), status: 'Pending'}, {sort: {modified: -1}}).fetch();
+    for (var i = 0; i < payouts.length; i++) {
+      var reward = Rewards.findOne(payouts[i].reward_id);
+      payouts[i].reward_name = reward.name;
+      payouts[i].reward_type = reward.type;
+    }
+    return payouts;
+  },
+  lastThreePayouts: function () {
+    var payouts = Payouts.find({user_id: Meteor.userId(), status: {$ne: 'Pending'}}, {sort: {modified: -1}, limit: 3}).fetch();
     for (var i = 0; i < payouts.length; i++) {
       var reward = Rewards.findOne(payouts[i].reward_id);
       payouts[i].reward_name = reward.name;
@@ -165,5 +159,19 @@ Template.fleetHistory.events({
       toastr.success('Fleet successfully deleted', 'Fleet History');
     }
 
+  }
+});
+
+
+Template.fleetsAndPayouts.helpers({
+  fleetsAndPayouts: function() {
+    var fleets = Fleets.find({user_id: Meteor.userId()}).fetch();
+    var payouts = Payouts.find({user_id: Meteor.userId()}).fetch();
+    var together = fleets.concat(payouts);
+    //return _.sortBy(together, function(together) {
+      //return together.modified;
+    //});
+    together =  _.sortBy(together, 'modified');
+    return together.reverse();
   }
 });
