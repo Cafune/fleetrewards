@@ -1,14 +1,6 @@
 // admin.js
 
-Template.dirtcampWallet.helpers({
-  dirtcamp_isk: function () {
-    var dng =  Corporations.findOne({corp_ticker: 'D-N-G'});
-    var balance = dng && dng.wallet && dng.wallet.balance
-    return numeral(balance).format('0,0.00');
-  }
-});
-
-Template.adminFleets.helpers({
+Template.pendingAdminFleets.helpers({
   fleets: function () {
     var fleets = Fleets.find({}, {sort: {modified: -1}}).fetch();
     for (var i = 0; i < fleets.length; i++) {
@@ -19,7 +11,7 @@ Template.adminFleets.helpers({
   }
 });
 
-Template.adminFleets.helpers({
+/*Template.adminFleets.helpers({
   fleets: function () {
     var fleets = Fleets.find({}, {sort: {modified: -1}}).fetch();
     for (var i = 0; i < fleets.length; i++) {
@@ -28,9 +20,9 @@ Template.adminFleets.helpers({
     }
     return fleets;
   }
-});
+});*/
 
-Template.adminPayouts.helpers({
+Template.pendingAdminPayouts.helpers({
   payouts: function () {
     var payouts = Payouts.find({}, {sort: {modified: -1}}).fetch();
     for (var i = 0; i < payouts.length; i++) {

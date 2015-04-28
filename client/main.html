@@ -28,19 +28,19 @@
       <div class="collapse navbar-collapse" id="newauth-nav">
         <ul class="nav navbar-nav">
           <li class="{{isActiveRoute regex='home'}}"><a href="/">Home</a></li>
-<li class="dropdown {{isActiveRoute regex='pending|rewardCP|users|fleethistory|payouthistory'}}">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin Panel <span class="caret"></span></a>
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="{{ pathFor 'pending' }}">Pending Submissions</a></li>
-    <li class="divider"></li>
-    <li><a href="{{ pathFor 'rewardCP' }}">Edit Rewards</a></li>
-    <li><a href="{{ pathFor 'users' }}">Users</a></li>
-    <li class="divider"></li>
-    <li><a href="{{ pathFor 'fleethistory' }}">Fleet History</a></li>
-    <li><a href="{{ pathFor 'payouthistory' }}">Payout History</a></li>
-  </ul>
-</li>
-
+          <li class="{{isActiveRoute regex='adminPending|adminRewards|adminUsers|adminFleets|adminPayouts'}}"><a href="{{ pathFor 'adminPending' }}">Admin</a></li>
+          <!--<li class="dropdown {{isActiveRoute regex='pending|rewardCP|users|fleethistory|payouthistory'}}">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin Panel <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="{{ pathFor 'pending' }}">Pending Submissions</a></li>
+              <li class="divider"></li>
+              <li><a href="{{ pathFor 'rewardCP' }}">Edit Rewards</a></li>
+              <li><a href="{{ pathFor 'users' }}">Users</a></li>
+              <li class="divider"></li>
+              <li><a href="{{ pathFor 'fleethistory' }}">Fleet History</a></li>
+              <li><a href="{{ pathFor 'payouthistory' }}">Payout History</a></li>
+            </ul>
+          </li>-->
         </ul>
         <ul class="nav navbar-nav navbar-right">
           {{#if currentUser}}
@@ -53,6 +53,9 @@
 </template>
 
 <template name="userNav">
+  {{#if pendingCounter}}
+    <li><a href="{{ pathFor 'adminPending' }}"> Pending <span class="badge">{{pendingCounter}}</span></a></li>
+  {{/if}}
   <li><p class="navbar-text">{{currentUser.profile.name}}</p></li>
   <li id="profile-picture"><img src="https://image.eveonline.com/Character/{{ currentUser.services.eve.character.id }}_32.jpg" class="img-circle" alt="{{ currentUser.profile.name }}"></li>
   <!--<li class="dropdown">

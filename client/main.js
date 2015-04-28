@@ -23,6 +23,18 @@ Template.userNav.events({
   }
 });
 
+Template.userNav.helpers({
+  pendingCounter: function () {
+    var fleetPendingCount = Fleets.find({status: 'Pending'}).count();
+    var payoutPendingCount = Payouts.find({status: 'Pending'}).count();
+    var pendingCount = fleetPendingCount + payoutPendingCount;
+    if (pendingCount < 1) {
+      return false;
+    }
+    return pendingCount;
+  }
+});
+
 toastr.options = {
   "closeButton": false,
   "debug": false,
