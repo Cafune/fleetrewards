@@ -28,7 +28,18 @@
       <div class="collapse navbar-collapse" id="newauth-nav">
         <ul class="nav navbar-nav">
           <li class="{{isActiveRoute regex='home'}}"><a href="/">Home</a></li>
-          <li class="{{isActiveRoute regex='admin'}}"><a href="{{ pathFor 'admin' }}">Admin</a></li>
+<li class="dropdown {{isActiveRoute regex='admin/pending|admin/rewards|admin/usercp|admin/fleethistory|admin/payouthistory'}}">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin Panel <span class="caret"></span></a>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="{{ pathFor 'pending' }}">Pending Submissions</a></li>
+    <li><a href="{{ pathFor 'rewards' }}">Edit Rewards</a></li>
+    <li><a href="{{ pathFor 'usercp' }}">User Control Panel</a></li>
+    <li class="divider"></li>
+    <li><a href="{{ pathFor 'fleethistory' }}">Fleet History</a></li>
+    <li><a href="{{ pathFor 'payouthistory' }}">Payout History</a></li>
+  </ul>
+</li>
+
         </ul>
         <ul class="nav navbar-nav navbar-right">
           {{#if currentUser}}
