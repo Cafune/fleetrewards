@@ -13,7 +13,7 @@ Meteor.startup(function () {
     var balance = 0;
     for (var i = 0; i < json['eveapi']['result'][0]['rowset'][0]['row'].length; i++) {
       if (json['eveapi']['result'][0]['rowset'][0]['row'][i]['$'].accountID == accountID) {
-        balance = json['eveapi']['result'][0]['rowset'][0]['row'][i]['$'].balance;
+        balance = Number(json['eveapi']['result'][0]['rowset'][0]['row'][i]['$'].balance);
       }
     }
     var date = new Date();
@@ -29,8 +29,36 @@ Meteor.startup(function () {
     }
     Corporations.insert(dng);
   }
+
 });
 
+// cron
+SyncedCron.add({
+  name: 'Update Wallet Balance',
+  schedule: function(parser) {
+    // parser is a later.parse object
+    return parser.text('every 31 mins');
+  },
+  job: function() {
+    var accountID = '58106738';
+    var keyID = '4331977';
+    var vCode = 'sWaCfhnYPEilkeLgdyvCGpVkzTk8l422Gml6zKGRIw9CGdiJD4ABclCuJ33180mU';
+    var url =  'https://api.eveonline.com/corp/AccountBalance.xml.aspx?keyID=' + keyID + '&vCode=' + vCode;
+    var xml = HTTP.call('GET', url);
+    var json = XML2JS.parse(xml.content);
+    var balance = 0;
+    for (var i = 0; i < json['eveapi']['result'][0]['rowset'][0]['row'].length; i++) {
+      if (json['eveapi']['result'][0]['rowset'][0]['row'][i]['$'].accountID == accountID) {
+        balance = Number(json['eveapi']['result'][0]['rowset'][0]['row'][i]['$'].balance);
+      }
+    }
+    var date = new Date();
+    Corporations.update({corp_ticker: 'D-N-G'}, {$set: {'wallet.balance': balance, 'modified': date}}, {multi: true});
+  }
+});
+
+// start cron
+SyncedCron.start();
 
 // Validate corp is correct, in this case DNG, 98224639
 // https://api.eveonline.com/eve/CharacterAffiliation.xml.aspx?ids=

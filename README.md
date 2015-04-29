@@ -11,6 +11,7 @@ Meteor.js
 * [meteor add numeral:numeral](https://atmospherejs.com/numeral/numeral) - number formatting
 * [meteor add chrismbeckett:toastr](https://atmospherejs.com/chrismbeckett/toastr) - notifications
 * [meteor add aldeed:collection2](https://atmospherejs.com/aldeed/collection2) - schema validation
+* [meteor add percolate:synced-cron](https://atmospherejs.com/percolate/synced-cron) - cron for api updates
 
 # Steps
 ```sh
