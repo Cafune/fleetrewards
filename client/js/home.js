@@ -55,17 +55,23 @@ Template.fleetSubmission.events({
 
 Template.rewards.helpers({
   rewards: function () {
-    return Rewards.find({});
+    var corporation = Corporations.findOne({corp_ticker: 'D-N-G'});
+    var pointValue = corporation && corporation.point_value;
+    var rewards = Rewards.find({}).fetch();
+    for (var i = 0; i < rewards.length; i++) {
+      rewards[i].point_cost = (rewards[i].isk_cost / pointValue).toFixed(2);
+    }
+    return rewards;
   }
 });
 
 Template.rewards.events({
   "click .btn": function (event, template) {
-
+    console.log(this.point_cost);
     // check if they have enough points
     var user = Meteor.user();
     var userId = user._id;
-    if (user['profile'].points - this.point_cost < 0) {
+    if (user['profile'].points < this.point_cost) {
       // don't have enough points
       return toastr.error('You do not have enough points', 'Rewards');;
     }
@@ -77,7 +83,7 @@ Template.rewards.events({
     Payouts.insert({
       user_id: userId,
       reward_id: this._id,
-      point_cost: this.point_cost,
+      point_cost: Number(this.point_cost),
       isk_cost: this.isk_cost,
       status: status,
       created: date,

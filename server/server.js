@@ -20,6 +20,7 @@ Meteor.startup(function () {
     var dng = {
       corp_name: 'Dirt \'n\' Glitter',
       corp_ticker: 'D-N-G',
+      point_value: 10000000,
       wallet: {
         balance: balance
       },
