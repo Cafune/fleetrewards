@@ -29,7 +29,8 @@
       <thead>
         <tr>
           <th>Date</th>
-          <th>Name</th>
+          <th>User</th>
+          <th>Fleet Name</th>
           <th>PAP Link</th>
           <th>Ping</th>
           <th>Additional Info</th>
@@ -37,10 +38,11 @@
         </tr>
       </thead>
       <tbody>
-        {{#each fleets}}
+        {{#each pendingFleets}}
           <tr>
             <td>{{formatDate modified}}</td>
             <td>{{user_name}}</td>
+            <td>{{fleet_name}}</td>
             <td>{{pap_link}}</td>
             <td>{{ping}}</td>
             <td>{{additional_information}}</td>
@@ -72,7 +74,7 @@
         </tr>
       </thead>
       <tbody>
-        {{#each payouts}}
+        {{#each pendingPayouts}}
           <tr>
             <td>{{formatDate modified}}</td>
             <td>{{user_name}}</td>
@@ -119,21 +121,26 @@
   <div id="modal" role="dialog" class="modal fade" tabindex="-1" aria-hidden="true">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-      <h3><i class="fa fa-eye"></i> Viewing {{user_name}}'s Fleet</h3>
+      <h3><i class="fa fa-eye"></i> Viewing <span id="userName"></span>'s Fleet</h3>
     </div>
     <div class="modal-body">
       <form>
+        <input type="hidden" class="form-control" id="fleetId" readonly>
         <div class="form-group">
-          <label for="paplink">PAP Link</label>
-          <input type="text" rows="1" class="form-control" id="paplink" readonly>
+          <label for="fleetName">Fleet Name</label>
+          <input type="text" class="form-control" id="fleetName" readonly>
+        </div>
+        <div class="form-group">
+          <label for="papLink">PAP Link</label>
+          <input type="text" class="form-control" id="papLink" readonly>
         </div>
         <div class="form-group">
           <label for="ping">Ping</label>
-          <input type="text" rows="3" class="form-control" id="ping" readonly>
+          <textarea type="text" rows="3" class="form-control" id="ping" readonly></textarea>
         </div>
         <div class="form-group">
-          <label for="addlinfo">Additional Info</label>
-          <input type="text" rows="3" class="form-control" id="addinfo" readonly>
+          <label for="additionalInformation">Additional Info</label>
+          <textarea type="text" rows="3" class="form-control" id="additionalInformation" readonly></textarea>
         </div>
       </form>
     </div>
