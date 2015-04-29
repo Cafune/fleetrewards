@@ -121,8 +121,8 @@
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
       <h3><i class="fa fa-eye"></i> Viewing {{user_name}}'s Fleet</h3>
     </div>
+    <form>
     <div class="modal-body">
-      <form>
         <div class="form-group">
           <label for="paplink">PAP Link</label>
           <input type="text" rows="1" class="form-control" id="paplink" readonly>
@@ -135,11 +135,10 @@
           <label for="addlinfo">Additional Info</label>
           <input type="text" rows="3" class="form-control" id="addinfo" readonly>
         </div>
-      </form>
+
     </div>
     <div class="modal-footer">
-      <form role="form" class="form-inline">
-        <div class="form-group">
+        <div class="form-group form-inline">
     <select class="form-control">
       <option selected disabled>Reward Amount</option>
       <option>1.0 Points</option>
@@ -148,7 +147,7 @@
     <button class="btn btn-success" type="submit" data-dismiss="modal">Approve</button>
   </div>
     <button class="btn btn-danger" type="submit" data-dismiss="modal">Deny</button>
-  </form>
   </div>
+</form>
 </div>
 </template>
