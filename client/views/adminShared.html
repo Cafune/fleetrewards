@@ -1,0 +1,27 @@
+
+<template name="adminHeader">
+  <div class="row">
+    <div class="col-md-12" style="text-align:center;">
+      <h2>Total value unredeemed points: 500,000,000 ISK | ISK in Dirtcamp Wallet: {{> dirtcampWallet}} ISK</h2>
+      <br>
+    </div>
+  </div>
+</template>
+
+<template name="dirtcampWallet">
+  {{dirtcamp_isk}}
+</template>
+
+<template name="adminNav">
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="nav nav-tabs">
+        <li class="{{isActiveRoute regex='adminPending'}}"><a href="{{ pathFor 'adminPending' }}"><icon class="fa fa-home"></icon>  Admin</a></li>
+        <li class="{{isActiveRoute regex='adminRewards'}}"><a href="{{ pathFor 'adminRewards' }}"><i class="fa fa-tag"></i> Rewards</a></li>
+        <li class="{{isActiveRoute regex='adminUsers'}}"><a href="{{ pathFor 'adminUsers' }}"><i class="fa fa-users"></i> Users</a></li>
+        <li class="{{isActiveRoute regex='adminFleets'}}"><a href="{{ pathFor 'adminFleets' }}"><i class="fa fa-history"></i> Fleet History</a></li>
+        <li class="{{isActiveRoute regex='adminPayouts'}}"><a href="{{ pathFor 'adminPayouts' }}"><i class="fa fa-exchange"></i> Payout History</a></li>
+      </ul>
+    </div>
+  </div>
+</template>

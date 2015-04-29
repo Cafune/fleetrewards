@@ -1,33 +1,25 @@
-<!-- pending.html -->
+<!-- admin.html -->
 
-<template name="dirtcampWallet">
-  {{dirtcamp_isk}}
-</template>
-
-<template name="pending">
+<template name="adminPending">
   {{> navbar}}
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12" style="text-align:center;">
-        <h2>Total value unredeemed points: 500,000,000 ISK</h2>
-        <h2>ISK in Dirtcamp Wallet: {{> dirtcampWallet}} ISK</h2>
-        <hr>
-      </div>
-    </div>
+    {{> adminHeader}}
+    {{> adminNav}}
+    <br>
     <div class="row">
       <div class="col-md-6">
-        {{> adminFleets}}
+        {{> pendingAdminFleets}}
       </div>
 
       <div class="col-md-6">
-        {{> adminPayouts}}
+        {{> pendingAdminPayouts}}
       </div>
     </div>
   </div>
   {{> modal}}
 </template>
 
-<template name="adminFleets">
+<template name="pendingAdminFleets">
   <div class="panel panel-success">
     <div class="panel-heading">
         <h3 class="panel-title"><i class="fa fa-rocket"></i>
@@ -60,7 +52,7 @@
   </div>
 </template>
 
-<template name="adminPayouts">
+<template name="pendingAdminPayouts">
   <div class="panel panel-success">
     <div class="panel-heading">
         <h3 class="panel-title"><i class=
