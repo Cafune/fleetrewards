@@ -61,11 +61,10 @@
 
 /*---MODAL---*/
 
-#modal {
+.modal{
     background: #fff;
     box-shadow: 2px 2px 5px #000;
     width: 40%;
-    height: 65%;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -75,7 +74,7 @@
     overflow: visible;
 }
 
-#modal .modal-footer {
+.modal .modal-footer{
   border: none;
   position: absolute;
   bottom: 0;
@@ -83,7 +82,7 @@
   overflow-y: visible !important;
 }
 
-#modal label, .new-fleet label {
+.modal label, .new-fleet label {
   font-weight: bold;
 }
 
