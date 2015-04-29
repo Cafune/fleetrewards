@@ -108,7 +108,7 @@ Template.rewards.events({
   }
 });
 
-Template.fleetHistory.helpers({
+Template.homeFleetHistory.helpers({
   pendingFleets: function () {
     return Fleets.find({user_id: Meteor.userId(), status: 'Pending'}, {sort: {modified: -1}}).fetch();
   },
@@ -118,7 +118,7 @@ Template.fleetHistory.helpers({
   }
 });
 
-Template.payoutHistory.helpers({
+Template.homePayoutHistory.helpers({
   pendingPayouts: function () {
     var payouts = Payouts.find({user_id: Meteor.userId(), status: 'Pending'}, {sort: {modified: -1}}).fetch();
     for (var i = 0; i < payouts.length; i++) {
@@ -139,7 +139,7 @@ Template.payoutHistory.helpers({
   }
 });
 
-Template.payoutHistory.events({
+Template.homePayoutHistory.events({
   "click .btn": function (event, template) {
 
     // delete a pending payout
@@ -156,7 +156,7 @@ Template.payoutHistory.events({
   }
 });
 
-Template.fleetHistory.events({
+Template.homeFleetHistory.events({
   "click .btn": function (event, template) {
 
     // delete a pending fleet
