@@ -88,11 +88,7 @@
               {{/if}}
               </td>
               <td>{{status}}</td>
-              <td>
-              {{#if eq status 'Pending'}}
-                <button class="btn btn-danger btn-xs" type="submit">Undo</button>
-              {{/if}}
-              </td>
+              <td><button class="btn btn-danger btn-xs" type="submit">Undo</button></td>
             </tr>
           {{/each}}
           {{#each lastThreeFleets}}
@@ -137,11 +133,7 @@
               <td>{{reward_name}}</td>
               <td>{{reward_type}}</td>
               <td>{{status}}</td>
-              <td>
-              {{#if eq status 'Pending'}}
-                <button class="btn btn-danger btn-xs" type="submit">Undo</button>
-              {{/if}}
-              </td>
+              <td><button class="btn btn-danger btn-xs" type="submit">Undo</button></td>
             </tr>
           {{/each}}
           {{#each lastThreePayouts}}

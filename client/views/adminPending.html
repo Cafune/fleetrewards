@@ -24,35 +24,35 @@
         <h3 class="panel-title"><i class="fa fa-rocket"></i>
         Logged Fleets</h3>
     </div>
-    <div class="panel-body">
-    <table class="table table-condensed table-striped">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>User</th>
-          <th>Fleet Name</th>
-          <th>PAP Link</th>
-          <th>Ping</th>
-          <th>Additional Info</th>
-          <th>Action/Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each pendingFleets}}
+    <div class="table-responsive">
+      <table class="table table-condensed table-striped">
+        <thead>
           <tr>
-            <td>{{formatDate modified}}</td>
-            <td>{{user_name}}</td>
-            <td>{{trimString fleet_name}}</td>
-            <td>{{pap_link}}</td>
-            <td>{{trimString ping}}</td>
-            <td>{{trimString additional_information}}</td>
-            <td><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal">View Submission</button></td>
+            <th>Date</th>
+            <th>User</th>
+            <th>Fleet Name</th>
+            <th>PAP Link</th>
+            <th>Ping</th>
+            <th>Additional Info</th>
+            <th>Action/Status</th>
           </tr>
-          {{> modal}}
-        {{/each}}
-      </tbody>
-    </table>
-  </div>
+        </thead>
+        <tbody>
+          {{#each pendingFleets}}
+            <tr>
+              <td>{{formatDate modified}}</td>
+              <td>{{user_name}}</td>
+              <td>{{trimString fleet_name}}</td>
+              <td>{{trimString pap_link}}</td>
+              <td>{{trimString ping}}</td>
+              <td>{{trimString additional_information}}</td>
+              <td><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal">View Submission</button></td>
+            </tr>
+            {{> modal}}
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
@@ -62,60 +62,60 @@
         <h3 class="panel-title"><i class=
         "fa fa-shopping-cart"></i> Payout Requests</h3>
     </div>
-    <div class="panel-body">
-    <table class="table table-condensed table-striped">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Name</th>
-          <th>Item</th>
-          <th>Type</th>
-          <th>Points</th>
-          <th>Cost</th>
-          <th>Action/Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each pendingPayouts}}
+    <div class="table-responsive">
+      <table class="table table-condensed table-striped">
+        <thead>
           <tr>
-            <td>{{formatDate modified}}</td>
-            <td>{{user_name}}</td>
-            <td>{{reward_name}}</td>
-            <td>{{reward_type}}</td>
-            <td>{{point_cost}}</td>
-            <td>{{isk_cost}} ISK</td>
+            <th>Date</th>
+            <th>Name</th>
+            <th>Item</th>
+            <th>Type</th>
+            <th>Points</th>
+            <th>Cost</th>
+            <th>Action/Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each pendingPayouts}}
+            <tr>
+              <td>{{formatDate modified}}</td>
+              <td>{{user_name}}</td>
+              <td>{{reward_name}}</td>
+              <td>{{reward_type}}</td>
+              <td>{{point_cost}}</td>
+              <td>{{isk_cost}} ISK</td>
+              <td><button class="btn btn-info btn-xs" type="submit">Fill Order</button></td>
+            </tr>
+          {{/each}}
+          <tr>
+            <td>11/30/14</td>
+            <td>Otsdarva IV</td>
+            <td>+4 Implants</td>
+            <td>Implant Set</td>
+            <td>5.0</td>
+            <td>110,000,000 ISK</td>
             <td><button class="btn btn-info btn-xs" type="submit">Fill Order</button></td>
           </tr>
-        {{/each}}
-        <tr>
-          <td>11/30/14</td>
-          <td>Otsdarva IV</td>
-          <td>+4 Implants</td>
-          <td>Implant Set</td>
-          <td>5.0</td>
-          <td>110,000,000 ISK</td>
-          <td><button class="btn btn-info btn-xs" type="submit">Fill Order</button></td>
-        </tr>
-        <tr>
-          <td>11/29/14</td>
-          <td>Vadrin Hegirin</td>
-          <td>Apocalypse - Baltec</td>
-          <td>Fleet Fit</td>
-          <td>10.0</td>
-          <td>210,000,000 ISK</td>
-          <td><button class="btn btn-info btn-xs" type="submit">Fill Order</button></td>
-        </tr>
-        <tr class="success">
-          <td>11/27/14</td>
-          <td>Ipoopedbad Ernaga</td>
-          <td>Ishtar - Shield</td>
-          <td>Fleet Fit</td>
-          <td>7.0</td>
-          <td>180,000,000 ISK</td>
-          <td>Order FIlled</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+          <tr>
+            <td>11/29/14</td>
+            <td>Vadrin Hegirin</td>
+            <td>Apocalypse - Baltec</td>
+            <td>Fleet Fit</td>
+            <td>10.0</td>
+            <td>210,000,000 ISK</td>
+            <td><button class="btn btn-info btn-xs" type="submit">Fill Order</button></td>
+          </tr>
+          <tr class="success">
+            <td>11/27/14</td>
+            <td>Ipoopedbad Ernaga</td>
+            <td>Ishtar - Shield</td>
+            <td>Fleet Fit</td>
+            <td>7.0</td>
+            <td>180,000,000 ISK</td>
+            <td>Order FIlled</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 </div>
 </template>
