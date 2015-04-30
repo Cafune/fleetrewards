@@ -480,5 +480,5 @@ div.DTFC_RightBodyWrapper table.dataTable thead .sorting_desc:after {
  * FixedHeader styles
  */
 div.FixedHeader_Cloned table {
-	margin: 0 !important
+	margin: 0 !important;
 }

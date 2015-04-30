@@ -1,6 +1,6 @@
 // home.js
 
-Template.userHome.rendered = function() {
+Template.userHome.onRendered = function() {
   $('[data-toggle="tooltip"]').tooltip() //initialize all tooltips in this template
 };
 

@@ -1,5 +1,13 @@
 // main.js
 
+Template.body.onRendered(function () {
+  // request eve IGB trust
+  /*if (typeof CCPEVE !== 'undefined') {
+    CCPEVE.requestTrust('http://site');
+  }*/
+});
+
+
 // format Dates
 Template.registerHelper('formatDate', function(date) {
   return moment(date).format('MM-DD-YYYY');
