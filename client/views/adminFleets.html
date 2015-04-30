@@ -5,9 +5,84 @@
     {{> adminNav}}
     <br>
     <div class="row">
-      <div class="col-md-12">
-        <p>text</p>
+      <div class="col-md-12"><div class="col-md-8">
+        {{> adminFleetDatatable }}
       </div>
+      <div class="col-md-4">
+        {{> adminFleetViewer }}
+    </div>
+  </div>
+</div>
+</div>
+</template>
+
+<template name="adminFleetDatatable">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-rocket"></i>
+        Fleet History</h3>
+    </div>
+    <table id="datatable" class="table table-condensed table-striped">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>User</th>
+          <th>Name</th>
+          <th>PAP Link</th>
+          <th>Ping</th>
+          <th>Additional Info</th>
+          <th>Admin Notes</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each fleets}}
+        <tr class="{{#if eq status 'Approved'}}success{{else}}{{#if eq status 'Pending'}}warning{{else}}danger{{/if}}{{/if}}">
+            <td>{{formatDate modified}}</td>
+            <td>{{user_name}}</td>
+            <td>{{trimString fleet_name}}</td>
+            <td>{{trimString pap_link}}</td>
+            <td>{{trimString ping}}</td>
+            <td>{{trimString additional_information}}</td>
+            <td>{{trimString admin_notes}}</td>
+            <td>{{status}}</td>
+            <td><button type="button" class="btn btn-info btn-xs">View Details</button></td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</template>
+
+<template name="adminFleetViewer">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title"><i class="fa fa-info-circle"></i> <span id="titleText"></span></h3>
+    </div>
+    <div class="panel-body">
+      <form>
+        <div class="form-group">
+          <label for="fleetName">Fleet Name</label>
+          <input type="text" class="form-control" id="fleetName" name="fleetName" readonly>
+        </div>
+        <div class="form-group">
+          <label for="papLink">PAP Link</label>
+          <input type="text" class="form-control" id="papLink" name="papLink" readonly>
+        </div>
+        <div class="form-group">
+          <label for="ping">Ping</label>
+          <textarea rows="3" type="text" class="form-control" id="ping" name="ping" readonly></textarea>
+        </div>
+        <div class="form-group">
+          <label for="additionalInformation">Additional Information</label>
+          <textarea rows="3" type="text" class="form-control" id="additionalInformation" name="additionalInformation" readonly></textarea>
+        </div>
+        <div class="form-group">
+          <label for="adminNotes">Admin Notes</label>
+          <textarea rows="3" type="text" class="form-control" id="adminNotes" name="adminNotes" readonly></textarea>
+        </div>
+      </form>
     </div>
   </div>
 </template>
