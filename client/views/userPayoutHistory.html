@@ -19,7 +19,7 @@
         <h3 class="panel-title"><i class=
         "fa fa-shopping-cart"></i> Payout History</h3>
     </div>
-    <table id="datatable" class="table table-condensed table-striped">
+    <table id="datatable" class="table table-striped">
       <thead>
         <tr>
           <th>Date</th>
@@ -32,7 +32,7 @@
       </thead>
       <tbody>
         {{#each payouts}}
-          <tr class="{{#if eq status 'Pending'}}warning{{else}}successs{{/if}}">
+          <tr class="{{#if eq status 'Pending'}}warning{{else}}success{{/if}}">
             <td>{{formatDate modified}}</td>
             <td>{{reward_name}}</td>
             <td>{{reward_type}}</td>
