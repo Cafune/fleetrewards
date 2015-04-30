@@ -17,6 +17,7 @@ Template.adminPayoutDatatable.helpers({
       var reward = Rewards.findOne(payouts[i].reward_id);
       payouts[i].reward_name = reward.name;
       payouts[i].reward_type = reward.type;
+      payouts[i].isk_cost = numeral(payouts[i].isk_cost).format('0,0.00');
     }
     return payouts;
   }
