@@ -39,10 +39,12 @@ Template.pendingAdminPayouts.helpers({
 
 Template.pendingAdminPayouts.events({
   'click .btn': function (event, template) {
+    var fulfilledBy = Meteor.userId();
     var date = new Date(); // current date
     // update payout
     Payouts.update({'_id': this._id}, {$set: {
       'status': 'Filled',
+      'fulfilled_by': fulfilledBy,
       'modified': date
     }}, {multi: true});
   }
@@ -82,7 +84,7 @@ Template.adminViewPendingFleet.events({
     var fleetJson = Session.get('fleet');
     fleet = Fleets.findOne({'_id': fleetJson.fleetId});
     userId = fleetJson.userId;
-    var managedBy = Meteor.userId();
+    var reviewedBy = Meteor.userId();
     var adminNotes = template.find('#adminNotes').value;
     var points = Number(template.find('select[id=rewardAmount]').value);
     var date = new Date(); // current date
@@ -91,7 +93,7 @@ Template.adminViewPendingFleet.events({
     Fleets.update({'_id': fleet._id}, {$set: {
       'status': 'Approved',
       'points': points,
-      'managed_by': managedBy,
+      'reviewed_by': reviewedBy,
       'admin_notes': adminNotes,
       'modified': date
     }}, {multi: true});
@@ -118,7 +120,7 @@ Template.adminViewPendingFleet.events({
     // get values
     var fleetJson = Session.get('fleet');
     fleet = Fleets.findOne({'_id': fleetJson.fleetId});
-    var managedBy = Meteor.userId();
+    var reviewedBy = Meteor.userId();
     var adminNotes =  $('#adminNotes').val();
     var date = new Date(); // current date
 
@@ -126,7 +128,7 @@ Template.adminViewPendingFleet.events({
     Fleets.update({'_id': fleet._id}, {$set: {
       'status': 'Denied',
       'points': 0,
-      'managed_by': managedBy,
+      'reviewed_by': reviewedBy,
       'admin_notes': adminNotes,
       'modified': date
     }}, {multi: true});
