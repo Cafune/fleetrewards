@@ -1,7 +1,9 @@
 /* adminFleets.js */
 
 Template.adminFleetDatatable.onRendered(function () {
-  this.$('#datatable').dataTable();
+  this.$('#datatable').dataTable({
+    "order":[[0,'desc']]
+  });
 });
 
 Template.adminFleetDatatable.helpers({
@@ -12,7 +14,9 @@ Template.adminFleetDatatable.helpers({
 
 Template.adminFleetDatatable.events({
   "click .btn": function (event, template) {
-    // view fleet details in userFleetViewer
+    // get admin user name from id
+    var admin = Meteor.users.findOne({'_id': this.reviewed_by});
+    // view fleet details
     // formatDate
     var date = moment(this.modified).format('MM-DD-YYYY');
     $('#titleText').html('Viewing ' + this.fleet_name + ' from ' + date);
@@ -21,6 +25,6 @@ Template.adminFleetDatatable.events({
     $('#ping').val(this.ping);
     $('#additionalInformation').val(this.additional_information);
     $('#adminNotes').val(this.admin_notes);
-    $('#reviewedBy').val(this.reviewed_by);
+    $('#reviewedBy').val(admin.profile.name);
   }
 });
