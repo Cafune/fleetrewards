@@ -16,7 +16,6 @@
       </div>
     </div>
   </div>
-  {{> modal}}
 </template>
 
 <template name="pendingAdminFleets">
@@ -48,6 +47,7 @@
             <td>{{additional_information}}</td>
             <td><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal">View Submission</button></td>
           </tr>
+          {{> modal}}
         {{/each}}
       </tbody>
     </table>
