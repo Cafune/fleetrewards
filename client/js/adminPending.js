@@ -38,7 +38,7 @@ Template.pendingAdminPayouts.helpers({
 });
 
 Template.pendingAdminFleets.events({
-  'click .btn': function (event, template) {
+  'click .view-submission': function (event, template) {
     var json = {'fleetId': this._id, 'userId': this.user_id};
     Session.set('fleet', json);
     $('#fleetId').val(this._id);
