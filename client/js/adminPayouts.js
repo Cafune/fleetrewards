@@ -12,6 +12,8 @@ Template.adminPayoutDatatable.helpers({
     for (var i = 0; i < payouts.length; i++) {
       var user = Meteor.users.findOne(payouts[i].user_id);
       payouts[i].user_name = user.profile.name;
+      var admin = Meteor.users.findOne(payouts[i].user_id);
+      payouts[i].filled_by = admin.profile.name;
       var reward = Rewards.findOne(payouts[i].reward_id);
       payouts[i].reward_name = reward.name;
       payouts[i].reward_type = reward.type;
