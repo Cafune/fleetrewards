@@ -79,7 +79,7 @@
           {{#each pendingFleets}}
             <tr class="warning">
               <td>{{formatDate modified}}</td>
-              <td>{{fleet_name}}</td>
+              <td>{{trimString fleet_name}}</td>
               <td>
               {{#if eq points null}}
                 Pending

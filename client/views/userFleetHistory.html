@@ -4,7 +4,7 @@
     {{> points}}
     <div class="row">
       <div class="col-md-8">
-        {{> userFleetDatatables }}
+        {{> userFleetDatatable }}
       </div>
       <div class="col-md-4">
         {{> userFleetViewer }}
@@ -13,7 +13,7 @@
 </div>
 </template>
 
-<template name="userFleetDatatables">
+<template name="userFleetDatatable">
   <div class="panel panel-success">
     <div class="panel-heading">
         <h3 class="panel-title"><i class="fa fa-rocket"></i>
@@ -31,13 +31,13 @@
         </tr>
       </thead>
       <tbody>
-        {{#each pendingFleets}}
+        {{#each fleets}}
           <tr>
             <td>{{formatDate modified}}</td>
-            <td>{{fleet_name}}</td>
+            <td>{{trimString fleet_name}}</td>
             <td>{{pap_link}}</td>
-            <td>{{ping}}</td>
-            <td>{{additional_information}}</td>
+            <td>{{trimString ping}}</td>
+            <td>{{trimString additional_information}}</td>
             <td><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalViewOnly">View Details</button></td>
           </tr>
         {{/each}}
@@ -73,24 +73,24 @@
 <template name="userFleetViewer">
   <div class="panel panel-success">
     <div class="panel-heading">
-      <h3 class="panel-title"><i class="fa fa-eye"></i> Viewing {{fleet_name}} from {{formatDate modified}}</h3>
+      <h3 class="panel-title"><i class="fa fa-eye"></i> <span id="titleText"></span></h3>
     </div>
     <div class="panel-body">
       <form>
         <div class="form-group">
-          <label for="name">Fleet Name</label>
+          <label for="fleetName">Fleet Name</label>
           <input type="text" class="form-control" id="fleetName" name="fleetName" readonly>
         </div>
         <div class="form-group">
-          <label for="paplink">PAP Link</label>
-          <input type="text" class="form-control" id="paplink" name="papLink" readonly>
+          <label for="papLink">PAP Link</label>
+          <input type="text" class="form-control" id="papLink" name="papLink" readonly>
         </div>
         <div class="form-group">
           <label for="ping">Ping</label>
           <textarea rows="3" type="text" class="form-control" id="ping" name="ping" readonly></textarea>
         </div>
         <div class="form-group">
-          <label for="addlinfo">Additional Information</label>
+          <label for="additionalInformation">Additional Information</label>
           <textarea rows="3" type="text" class="form-control" id="additionalInformation" name="additionalInformation" readonly></textarea>
         </div>
       </form>

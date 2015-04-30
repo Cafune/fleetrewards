@@ -42,10 +42,10 @@
           <tr>
             <td>{{formatDate modified}}</td>
             <td>{{user_name}}</td>
-            <td>{{fleet_name}}</td>
+            <td>{{trimString fleet_name}}</td>
             <td>{{pap_link}}</td>
-            <td>{{ping}}</td>
-            <td>{{additional_information}}</td>
+            <td>{{trimString ping}}</td>
+            <td>{{trimString additional_information}}</td>
             <td><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal">View Submission</button></td>
           </tr>
           {{> modal}}

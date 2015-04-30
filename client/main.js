@@ -13,6 +13,16 @@ Template.registerHelper('formatDate', function(date) {
   return moment(date).format('MM-DD-YYYY');
 });
 
+// trim string length if it's longer than 14 characters
+Template.registerHelper('trimString', function(string) {
+  // check if string is defined
+  if (typeof string !== 'undefined' && string.length > 14) {
+    var newString = string.substring(0,11);
+    return newString + '...';
+  }
+  return string;
+});
+
 // iff checker
 Template.registerHelper('eq', function(v1, v2, options) {
   if (v1 == v2) {
