@@ -9,6 +9,7 @@
     <div class="row">
       <div class="col-md-6">
         {{> pendingAdminFleets}}
+        {{> adminViewPendingFleet}}
       </div>
 
       <div class="col-md-6">
@@ -54,7 +55,6 @@
       </table>
     </div>
   </div>
-  {{> adminViewPendingFleet}}
 </template>
 
 <template name="pendingAdminPayouts">
@@ -147,29 +147,30 @@
           <textarea rows="3" type="text" class="form-control" id="additionalInformation" name="additionalInformation" readonly></textarea>
         </div>
         <div class="form-group col-md-6">
-          <label for="adminNotes">Reward Amount</label>
-          <select class="form-control">
-            <option>1.0 Points</option>
-            <option>1.5 Points</option>
+          <label for="rewardAmount">Reward Amount</label>
+          <select class="form-control" id="rewardAmount">
+            <option value="1.0">1.0 Points</option>
+            <option value="1.5">1.5 Points</option>
           </select>
         </div>
         <div class="form-group col-md-6">
           <label for="adminNotes">Admin Notes</label>
           <textarea type="text" rows="2" class="form-control" id="adminNotes" name="adminNotes" placeholder="(optional)"></textarea>
         </div>
-        <br>
         <div class="form-group col-md-6">
           <button type="button" class="btn btn-primary btn-block" id="approve">Approve</button>
         </div>
         <div class="form-group col-md-6">
-          <button type="submit" class="btn btn-danger btn-block" id="deny">Deny</button>
+          <button type="button" class="btn btn-danger btn-block" id="deny">Deny</button>
         </div>
       </form>
+      <!--<button class="btn btn-primary btn-block col-md-6" id="approve">Approve</button>
+      <button class="btn btn-danger btn-block col-md-6" id="deny">Deny</button>-->
     </div>
   </div>
 </template>
 
-<template name="modal">
+<!--<template name="modal">
   <div id="modal" role="dialog" class="modal fade" tabindex="-1" aria-hidden="true">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -213,4 +214,4 @@
   </form>
   </div>
 </div>
-</template>
+</template>-->

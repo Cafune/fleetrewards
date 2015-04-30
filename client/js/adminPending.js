@@ -39,7 +39,7 @@ Template.pendingAdminPayouts.helpers({
 
 Template.pendingAdminFleets.events({
   'click .btn': function (event, template) {
-    var json = {'fleetId': this._id};
+    var json = {'fleetId': this._id, 'userId': this.user_id};
     Session.set('fleet', json);
     $('#fleetId').val(this._id);
     $('#userName').text(this.user_name);
@@ -58,41 +58,73 @@ Template.adminViewPendingFleet.events({
   'click #cancel': function (event, template) {
     $('#adminViewPendingFleet').hide();
     $('#pendingAdminFleets').show();
-    var fleet = Session.get('fleet');
-    console.log(fleet.fleetId);
+    $('#adminNotes').val('');
+    $('#rewardAmount option').eq(0).prop('selected', true);
   },
   'click #approve': function (event, template) {
-    console.log('approve');
+    // get values
+    var fleetJson = Session.get('fleet');
+    fleet = Fleets.findOne({'_id': fleetJson.fleetId});
+    userId = fleetJson.userId;
+    var managedBy = Meteor.userId();
+    var adminNotes = template.find('#adminNotes').value;
+    var points = Number(template.find('select[id=rewardAmount]').value);
+    var date = new Date(); // current date
 
-    var fleet = Session.get('fleet');
-    console.log(fleet.fleetId);
+    // update fleet
+    Fleets.update({'_id': fleet._id}, {$set: {
+      'status': 'Approved',
+      'points': points,
+      'managed_by': managedBy,
+      'admin_notes': adminNotes,
+      'modified': date
+    }}, {multi: true});
+
+    //update users points
+    Meteor.users.update({'_id': userId}, {
+      '$set': {
+        'profile.modified': date
+      },
+      '$inc': {
+        'profile.points': points
+      }
+    }, {multi: true});
+
+    // reset view
+    $('#adminViewPendingFleet').hide();
+    $('#pendingAdminFleets').show();
+    // reset values
+    $('#adminNotes').val('');
+    $('#rewardAmount option').eq(0).prop('selected', true);
     delete Session.keys['fleet'];
-
-    var adminNotes = template.find('input[name=adminNotes]');
-    var points = template.find('select[name=selector]');
-    console.log(adminNotes);
-    console.log(points);
-
-    event.preventDefault();
   },
-  /*'click #deny': function (event, template) {
-    console.log('deny');
-  },*/
+  'click #deny': function (event, template) {
+    // get values
+    var fleetJson = Session.get('fleet');
+    fleet = Fleets.findOne({'_id': fleetJson.fleetId});
+    var managedBy = Meteor.userId();
+    var adminNotes =  $('#adminNotes').val();
+    var date = new Date(); // current date
+
+    // update
+    Fleets.update({'_id': fleet._id}, {$set: {
+      'status': 'Denied',
+      'points': 0,
+      'managed_by': managedBy,
+      'admin_notes': adminNotes,
+      'modified': date
+    }}, {multi: true});
+
+    // reset view
+    $('#adminViewPendingFleet').hide();
+    $('#pendingAdminFleets').show();
+    // reset values
+    $('#adminNotes').val('');
+    $('#rewardAmount option').eq(0).prop('selected', true);
+    delete Session.keys['fleet'];
+  },
   'submit form': function (event, template) {
-
-    //delete Session.keys['foo']
-    console.log('form submit');
-    //console.log(this._id);
-    //console.log('test');
-
-    /*var userId = Meteor.userId();
-    var fleetName = event.target.fleetName.value;
-    var papLink = event.target.papLink.value;
-    var ping = event.target.ping.value;
-    var additionalInformation = event.target.additionalInformation.value;
-    var status = 'Pending';
-    var date = new Date(); // current date*/
-    event.preventDefault();
-    //return false;
+    //event.preventDefault();
+    return false;
   }
 });
