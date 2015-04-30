@@ -1,7 +1,9 @@
 /* userFleetHistory.js */
 
 Template.userFleetDatatable.onRendered(function () {
-  this.$('#datatable').dataTable();
+  this.$('#datatable').dataTable({
+    "order":[[0,'desc']]
+  });
 });
 
 Template.userFleetDatatable.helpers({
