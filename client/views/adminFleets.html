@@ -47,6 +47,7 @@
             <td>{{trimString ping}}</td>
             <td>{{trimString additional_information}}</td>
             <td>{{trimString admin_notes}}</td>
+            <td>{{status}}</td>
             <td>
               {{#if eq points null}}
                 Pending
@@ -54,8 +55,7 @@
                 {{points}}
               {{/if}}
             </td>
-            <td>{{trimString reviewed_by}}</td>
-            <td>{{status}}</td>
+            <td>{{trimString admin_name}}</td>
             <td><button type="button" class="btn btn-info btn-xs">View Details</button></td>
           </tr>
         {{/each}}

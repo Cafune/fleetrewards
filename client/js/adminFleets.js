@@ -8,7 +8,14 @@ Template.adminFleetDatatable.onRendered(function () {
 
 Template.adminFleetDatatable.helpers({
   fleets: function () {
-    return Fleets.find({}, {sort: {modified: -1}}).fetch();
+    var fleets = Fleets.find({}, {sort: {modified: -1}}).fetch();
+    for (var i = 0; i < fleets.length; i++) {
+      var user = Meteor.users.findOne(fleets[i].user_id);
+      fleets[i].user_name = user && user.profile && user.profile.name;
+      var admin = Meteor.users.findOne(fleets[i].reviewed_by);
+      fleets[i].admin_name = admin && admin.profile && admin.profile.name;
+    }
+    return fleets;
   }
 });
 
