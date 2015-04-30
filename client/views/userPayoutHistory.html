@@ -27,16 +27,18 @@
           <th>Type</th>
           <th>Points</th>
           <th>Cost</th>
+          <th>Status</th>
         </tr>
       </thead>
       <tbody>
         {{#each pendingPayouts}}
-          <tr>
+          <tr class="{{#if eq status 'Pending'}}warning{{else}}successs{{/if}}">
             <td>{{formatDate modified}}</td>
             <td>{{reward_name}}</td>
             <td>{{reward_type}}</td>
             <td>{{point_cost}}</td>
             <td>{{isk_cost}} ISK</td>
+            <td>{{status}}</td>
           </tr>
         {{/each}}
       </tbody>
