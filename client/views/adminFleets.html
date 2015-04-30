@@ -5,14 +5,13 @@
     {{> adminNav}}
     <br>
     <div class="row">
-      <div class="col-md-12"><div class="col-md-8">
+      <div class="col-md-8">
         {{> adminFleetDatatable }}
       </div>
       <div class="col-md-4">
         {{> adminFleetViewer }}
     </div>
   </div>
-</div>
 </div>
 </template>
 
@@ -33,6 +32,7 @@
           <th>Additional Info</th>
           <th>Admin Notes</th>
           <th>Status</th>
+          <th>Revewied By</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -46,6 +46,7 @@
             <td>{{trimString ping}}</td>
             <td>{{trimString additional_information}}</td>
             <td>{{trimString admin_notes}}</td>
+            <td>{{trimString managed_by}}</td>
             <td>{{status}}</td>
             <td><button type="button" class="btn btn-info btn-xs">View Details</button></td>
           </tr>
@@ -81,6 +82,10 @@
         <div class="form-group">
           <label for="adminNotes">Admin Notes</label>
           <textarea rows="3" type="text" class="form-control" id="adminNotes" name="adminNotes" readonly></textarea>
+        </div>
+        <div class="form-group">
+          <label for="reviewedBy">Reviewed By</label>
+          <input type="text" class="form-control" id="reviewedBy" name="reviewedBy" readonly>
         </div>
       </form>
     </div>

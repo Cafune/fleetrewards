@@ -1,3 +1,3 @@
-Template.userPayoutDatatables.onRendered(function () {
+Template.userPayoutDatatable.onRendered(function () {
  this.$('#datatable').dataTable();
 });
