@@ -36,37 +36,13 @@
         <tr class="{{#if eq status 'Approved'}}success{{else}}{{#if eq status 'Pending'}}warning{{else}}danger{{/if}}{{/if}}">
             <td>{{formatDate modified}}</td>
             <td>{{trimString fleet_name}}</td>
-            <td>{{trimstring pap_link}}</td>
+            <td>{{trimString pap_link}}</td>
             <td>{{trimString ping}}</td>
-            <td>{{Status}}</td>
+            <td>{{status}}</td>
             <td>{{trimString additional_information}}</td>
             <td><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalViewOnly">View Details</button></td>
           </tr>
         {{/each}}
-        <tr>
-          <td>atest</td>
-          <td>ztest</td>
-          <td>atest</td>
-          <td>ztest</td>
-          <td>atest</td>
-          <td><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalViewOnly">View Details</button></td>
-        </tr>
-        <tr>
-          <td>ztest</td>
-          <td>atest</td>
-          <td>ztest</td>
-          <td>atest</td>
-          <td>ztest</td>
-          <td><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalViewOnly">View Details</button></td>
-        </tr>
-        <tr>
-          <td>ztest</td>
-          <td>atest</td>
-          <td>ztest</td>
-          <td>atest</td>
-          <td>search</td>
-          <td><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalViewOnly">View Details</button></td>
-        </tr>
       </tbody>
     </table>
   </div>
