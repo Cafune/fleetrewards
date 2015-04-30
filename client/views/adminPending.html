@@ -19,7 +19,7 @@
 </template>
 
 <template name="pendingAdminFleets">
-  <div class="panel panel-success">
+  <div class="panel panel-success" id="pendingAdminFleets">
     <div class="panel-heading">
         <h3 class="panel-title"><i class="fa fa-rocket"></i>
         Logged Fleets</h3>
@@ -47,14 +47,14 @@
               <td>{{trimString ping}}</td>
               <td>{{trimString additional_information}}</td>
               <!--<td><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modal">View Submission</button></td>-->
-              <td><a type="button" class="btn btn-info btn-xs" href="/admin/pending/fleets/{{_id}}">View Submission</a></td>
+              <td><button type="button" class="btn btn-info btn-xs">View Submission</button></td>
             </tr>
-            {{> modal}}
           {{/each}}
         </tbody>
       </table>
     </div>
   </div>
+  {{> adminViewPendingFleet}}
 </template>
 
 <template name="pendingAdminPayouts">
@@ -122,58 +122,49 @@
 </template>
 
 <template name="adminViewPendingFleet">
-  {{> navbar}}
-  <div class="container-fluid">
-    {{> adminHeader}}
-    {{> adminNav}}
-    <br>
-    <div class="row">
-      <div class="col-md-offset-2 col-md-8">
-        <div class="panel panel-success">
-          <span class="pull-right"><a type="button" class="btn btn-warning btn-xs" id="cancel" href="{{ pathFor 'adminPending' }}">Cancel</a></span>
-          <div class="panel-heading">
-            <h3 class="panel-title"><i class="fa fa-info-circle"></i> Viewing {{this._id}} from {{formatDate modified}}</h3>
-          </div>
-          <div class="panel-body">
-            <form>
-              <div class="form-group col-md-6">
-                <label for="fleetName">Fleet Name</label>
-                <input type="text" class="form-control" id="fleetName" name="fleetName" value="{{this.fleet_name}}" readonly>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="papLink">PAP Link</label>
-                <input type="text" class="form-control" id="papLink" name="papLink" value="{{this.pap_link}}" readonly>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="ping">Ping</label>
-                <textarea rows="3" type="text" class="form-control" id="ping" name="ping" value="{{this.ping}}" readonly></textarea>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="additionalInformation">Additional Info</label>
-                <textarea rows="3" type="text" class="form-control" id="additionalInformation" name="additionalInformation" value="{{this.additional_information}}" readonly></textarea>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="adminNotes">Reward Amount</label>
-                <select class="form-control">
-                  <option>1.0 Points</option>
-                  <option>1.5 Points</option>
-                </select>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="adminNotes">Admin Notes</label>
-                <textarea type="text" rows="2" class="form-control" id="adminNotes" name="adminNotes" placeholder="(optional)"></textarea>
-              </div>
-              <br>
-              <div class="form-group col-md-6">
-                <button type="button" class="btn btn-primary btn-block" id="approve">Approve</button>
-              </div>
-              <div class="form-group col-md-6">
-                <button type="submit" class="btn btn-danger btn-block" id="deny">Deny</button>
-              </div>
-            </form>
-          </div>
+  <div class="panel panel-success" id="adminViewPendingFleet">
+    <div class="panel-heading">
+      <span class="pull-right"><button id="cancel" class="close" ><i class="fa fa-times"></i></button></span>
+      <h3 class="panel-title"><i class="fa fa-info-circle"></i> Viewing <span id="userName"></span>'s fleet from <span id="date"></span></h3>
+    </div>
+    <div class="panel-body">
+      <form>
+        <input type="hidden" id="fleetId" name="fleetId" readonly>
+        <div class="form-group col-md-6">
+          <label for="fleetName">Fleet Name</label>
+          <input type="text" class="form-control" id="fleetName" name="fleetName" readonly>
         </div>
-      </div>
+        <div class="form-group col-md-6">
+          <label for="papLink">PAP Link</label>
+          <input type="text" class="form-control" id="papLink" name="papLink" readonly>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="ping">Ping</label>
+          <textarea rows="3" type="text" class="form-control" id="ping" name="ping" readonly></textarea>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="additionalInformation">Additional Info</label>
+          <textarea rows="3" type="text" class="form-control" id="additionalInformation" name="additionalInformation" readonly></textarea>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="adminNotes">Reward Amount</label>
+          <select class="form-control">
+            <option>1.0 Points</option>
+            <option>1.5 Points</option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="adminNotes">Admin Notes</label>
+          <textarea type="text" rows="2" class="form-control" id="adminNotes" name="adminNotes" placeholder="(optional)"></textarea>
+        </div>
+        <br>
+        <div class="form-group col-md-6">
+          <button type="button" class="btn btn-primary btn-block" id="approve">Approve</button>
+        </div>
+        <div class="form-group col-md-6">
+          <button type="submit" class="btn btn-danger btn-block" id="deny">Deny</button>
+        </div>
+      </form>
     </div>
   </div>
 </template>

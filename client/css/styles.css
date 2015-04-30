@@ -488,3 +488,11 @@ div.DTFC_RightBodyWrapper table.dataTable thead .sorting_desc:after {
 div.FixedHeader_Cloned table {
 	margin: 0 !important;
 }
+
+#adminViewPendingFleet {
+  display: none;
+}
+
+#cancel {
+  margin-top: -4px;
+}

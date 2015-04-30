@@ -39,25 +39,49 @@ Template.pendingAdminPayouts.helpers({
 
 Template.pendingAdminFleets.events({
   'click .btn': function (event, template) {
-    /*$('#fleetId').val(this._id);
+    var json = {'fleetId': this._id};
+    Session.set('fleet', json);
+    $('#fleetId').val(this._id);
     $('#userName').text(this.user_name);
+    $('#date').text(moment(this.created).format('MM-DD-YYYY'));
     $('#fleetName').val(this.fleet_name);
     $('#papLink').val(this.pap_link);
     $('#ping').val(this.ping);
-    $('#additionalInformation').val(this.additional_information);*/
+    $('#additionalInformation').val(this.additional_information);
+
+    $('#pendingAdminFleets').hide();
+    $('#adminViewPendingFleet').show();
   }
 });
 
 Template.adminViewPendingFleet.events({
   'click #cancel': function (event, template) {
-    history.go(-1);
+    $('#adminViewPendingFleet').hide();
+    $('#pendingAdminFleets').show();
+    var fleet = Session.get('fleet');
+    console.log(fleet.fleetId);
   },
   'click #approve': function (event, template) {
-    console.log('click');
-    console.log(template.data);
+    console.log('approve');
+
+    var fleet = Session.get('fleet');
+    console.log(fleet.fleetId);
+    delete Session.keys['fleet'];
+
+    var adminNotes = template.find('input[name=adminNotes]');
+    var points = template.find('select[name=selector]');
+    console.log(adminNotes);
+    console.log(points);
+
+    event.preventDefault();
   },
+  /*'click #deny': function (event, template) {
+    console.log('deny');
+  },*/
   'submit form': function (event, template) {
 
+    //delete Session.keys['foo']
+    console.log('form submit');
     //console.log(this._id);
     //console.log('test');
 
@@ -68,7 +92,7 @@ Template.adminViewPendingFleet.events({
     var additionalInformation = event.target.additionalInformation.value;
     var status = 'Pending';
     var date = new Date(); // current date*/
-
-    return false;
+    event.preventDefault();
+    //return false;
   }
 });
