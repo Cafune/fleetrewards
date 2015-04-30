@@ -3,6 +3,67 @@
   <div class="container-fluid">
     {{> points}}
     <div class="row">
+      <div class="col-md-12">
+        {{> userFleetDatatables }}
+      </div>
     </div>
+  </div>
+  {{> modalViewOnly }}
+</template>
+
+<template name="userFleetDatatables">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-rocket"></i>
+        Fleet History</h3>
+    </div>
+    <table id="datatable" class="table table-condensed table-striped">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Name</th>
+          <th>PAP Link</th>
+          <th>Ping</th>
+          <th>Additional Info</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each pendingFleets}}
+          <tr>
+            <td>{{formatDate modified}}</td>
+            <td>{{fleet_name}}</td>
+            <td>{{pap_link}}</td>
+            <td>{{ping}}</td>
+            <td>{{additional_information}}</td>
+            <td><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalViewOnly">View Details</button></td>
+          </tr>
+        {{/each}}
+        <tr>
+          <td>atest</td>
+          <td>ztest</td>
+          <td>atest</td>
+          <td>ztest</td>
+          <td>atest</td>
+          <td><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalViewOnly">View Details</button></td>
+        </tr>
+        <tr>
+          <td>ztest</td>
+          <td>atest</td>
+          <td>ztest</td>
+          <td>atest</td>
+          <td>ztest</td>
+          <td><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalViewOnly">View Details</button></td>
+        </tr>
+        <tr>
+          <td>ztest</td>
+          <td>atest</td>
+          <td>ztest</td>
+          <td>atest</td>
+          <td>search</td>
+          <td><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalViewOnly">View Details</button></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
