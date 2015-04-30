@@ -32,6 +32,7 @@
           <th>Additional Info</th>
           <th>Admin Notes</th>
           <th>Status</th>
+          <th>Points</th>
           <th>Revewied By</th>
           <th>Action</th>
         </tr>
@@ -46,6 +47,13 @@
             <td>{{trimString ping}}</td>
             <td>{{trimString additional_information}}</td>
             <td>{{trimString admin_notes}}</td>
+            <td>
+              {{#if eq points null}}
+                Pending
+              {{else}}
+                {{points}}
+              {{/if}}
+            </td>
             <td>{{trimString managed_by}}</td>
             <td>{{status}}</td>
             <td><button type="button" class="btn btn-info btn-xs">View Details</button></td>
@@ -53,7 +61,7 @@
         {{/each}}
       </tbody>
     </table>
-  </div>
+</div>
 </template>
 
 <template name="adminFleetViewer">

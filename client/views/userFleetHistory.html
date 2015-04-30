@@ -27,6 +27,7 @@
           <th>PAP Link</th>
           <th>Ping</th>
           <th>Additional Info</th>
+          <th>Points</th>
           <th>Status</th>
           <th>Action</th>
         </tr>
@@ -39,6 +40,13 @@
             <td>{{trimString pap_link}}</td>
             <td>{{trimString ping}}</td>
             <td>{{trimString additional_information}}</td>
+            <td>
+              {{#if eq points null}}
+                Pending
+              {{else}}
+                {{points}}
+              {{/if}}
+            </td>
             <td>{{status}}</td>
             <td><button type="button" class="btn btn-info btn-xs">View Details</button></td>
           </tr>
