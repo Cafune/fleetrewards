@@ -6,7 +6,8 @@ Template.userFleetDatatable.onRendered(function () {
 
 Template.userFleetDatatable.helpers({
   fleets: function () {
-    return Fleets.find({user_id: Meteor.userId(), status: {$ne: 'Pending'}}, {sort: {modified: -1}}).fetch();
+    //return Fleets.find({user_id: Meteor.userId(), status: {$ne: 'Pending'}}, {sort: {modified: -1}}).fetch();
+    return Fleets.find({user_id: Meteor.userId()}, {sort: {modified: -1}}).fetch();
   }
 });
 

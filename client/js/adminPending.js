@@ -37,6 +37,17 @@ Template.pendingAdminPayouts.helpers({
   }
 });
 
+Template.pendingAdminPayouts.events({
+  'click .btn': function (event, template) {
+    var date = new Date(); // current date
+    // update payout
+    Payouts.update({'_id': this._id}, {$set: {
+      'status': 'Filled',
+      'modified': date
+    }}, {multi: true});
+  }
+});
+
 Template.pendingAdminFleets.events({
   'click .view-submission': function (event, template) {
     var json = {'fleetId': this._id, 'userId': this.user_id};

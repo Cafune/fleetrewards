@@ -31,7 +31,7 @@
         </tr>
       </thead>
       <tbody>
-        {{#each pendingPayouts}}
+        {{#each payouts}}
           <tr class="{{#if eq status 'Pending'}}warning{{else}}successs{{/if}}">
             <td>{{formatDate modified}}</td>
             <td>{{reward_name}}</td>
