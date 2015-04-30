@@ -27,16 +27,18 @@
           <th>PAP Link</th>
           <th>Ping</th>
           <th>Additional Info</th>
+          <th>Status</th>
           <th>Action</th>
         </tr>
       </thead>
       <tbody>
         {{#each fleets}}
-          <tr>
+        <tr class="{{#if eq status 'Approved'}}success{{else}}{{#if eq status 'Pending'}}warning{{else}}danger{{/if}}{{/if}}">
             <td>{{formatDate modified}}</td>
             <td>{{trimString fleet_name}}</td>
-            <td>{{pap_link}}</td>
+            <td>{{trimstring pap_link}}</td>
             <td>{{trimString ping}}</td>
+            <td>{{Status}}</td>
             <td>{{trimString additional_information}}</td>
             <td><button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#modalViewOnly">View Details</button></td>
           </tr>
