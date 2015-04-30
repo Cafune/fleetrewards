@@ -49,15 +49,20 @@ Template.pendingAdminFleets.events({
     $('#ping').val(this.ping);
     $('#additionalInformation').val(this.additional_information);
 
-    $('#pendingAdminFleets').hide();
-    $('#adminViewPendingFleet').show();
+    $('#pendingAdminFleets').fadeOut('fast',showPending);
+    function showPending() {
+      $('#adminViewPendingFleet').fadeIn('fast');
+    }
   }
 });
 
 Template.adminViewPendingFleet.events({
   'click #cancel': function (event, template) {
-    $('#adminViewPendingFleet').hide();
-    $('#pendingAdminFleets').show();
+    $('#adminViewPendingFleet').fadeOut('fast',showFleets);
+    function showFleets() {
+      $('#pendingAdminFleets').fadeIn('fast');
+    }
+
     $('#adminNotes').val('');
     $('#rewardAmount option').eq(0).prop('selected', true);
   },
