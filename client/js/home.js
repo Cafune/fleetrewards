@@ -167,17 +167,3 @@ Template.homeFleetHistory.events({
 
   }
 });
-
-
-Template.fleetsAndPayouts.helpers({
-  fleetsAndPayouts: function() {
-    var fleets = Fleets.find({user_id: Meteor.userId()}).fetch();
-    var payouts = Payouts.find({user_id: Meteor.userId()}).fetch();
-    var together = fleets.concat(payouts);
-    //return _.sortBy(together, function(together) {
-      //return together.modified;
-    //});
-    together =  _.sortBy(together, 'modified');
-    return together.reverse();
-  }
-});

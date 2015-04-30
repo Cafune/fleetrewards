@@ -159,17 +159,17 @@
       <div class="panel-body">
       <form role="form" class="form-inline">
         <div class="btn-group btn-group-justified">
-              <select class="form-control" style="width:50%;">
-                  <option selected>Doctrine Fittings</option>
-                  <option>Hulls</option>
-                  <option>Implant Sets</option>
-                  <option>SKINs</option>
-                  <option>ISK</option>
-                  <option>Ingame Titles</option>
+              <select id="rewardType" class="form-control" style="width:50%;">
+                  <option value="Doctrine Fittings" selected>Doctrine Fittings</option>
+                  <option value="Hulls">Hulls</option>
+                  <option value="Implant Sets">Implant Sets</option>
+                  <option value="SKINs">SKINs</option>
+                  <option value="ISK">ISK</option>
+                  <option value="Ingame Titles">Ingame Titles</option>
               </select>
-              <select class="form-control" style="width:50%;">
-                <option selected>Show All</option>
-                <option>Show Affordable</option>
+              <select id="rewardFilter" class="form-control" style="width:50%;">
+                <option value="Show All" selected>Show All</option>
+                <option value="Show Affordable">Show Affordable</option>
               </select>
             </div>
         </form>
@@ -225,75 +225,5 @@
               </tr>
           </tbody>
       </table>
-  </div>
-</template>
-
-<template name="fleetsAndPayouts">
-  <div class="panel panel-success">
-    <div class="panel-heading">
-      <h3 class="panel-title"><i class="fa fa-book"></i> History</h3>
-    </div>
-    <div class="panel-body">
-    <table class="table table-condensed">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>ID</th>
-          <th>Action</th>
-          <th>Status</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-        <tbody>
-          {{#each fleetsAndPayouts}}
-            <tr class="{{#if eq status 'Pending'}}warning{{else}}success{{/if}}">
-              <td>{{formatDate modified}}</td>
-              <td>{{_id}}</td>
-              <td>
-              {{#if pap_link}}
-                Fleet
-              {{else}}
-                Purchase
-              {{/if}}
-              </td>
-              <td>{{status}}</td>
-              <td>
-              {{#if eq status 'Pending'}}
-                <button class="btn btn-danger btn-xs" type="submit">Undo</button>
-              {{/if}}
-              </td>
-            </tr>
-          {{/each}}
-          <tr class="warning">
-            <td>11/19/2014</td>
-            <td>Fleet</td>
-            <td>Action</td>
-            <td>Pending</td>
-            <td><button class="btn btn-danger btn-xs" type="submit">Undo</button></td>
-          </tr>
-          <tr class="danger">
-            <td>11/15/2014</td>
-            <td>Fleet</td>
-            <td>Action</td>
-            <td>Denied</td>
-            <td></td>
-          </tr>
-          <tr class="success">
-            <td>11/14/2014</td>
-            <td>Fleet</td>
-            <td>Action</td>
-            <td>Approved</td>
-            <td></td>
-          </tr>
-          <tr class="success">
-            <td>11/10/2014</td>
-            <td>Fleet</td>
-            <td>Action</td>
-            <td>Approved</td>
-            <td></td>
-          </tr>
-        </tbody>
-    </table>
-  </div>
   </div>
 </template>
