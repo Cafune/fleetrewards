@@ -39,28 +39,36 @@ Template.pendingAdminPayouts.helpers({
 
 Template.pendingAdminFleets.events({
   'click .btn': function (event, template) {
-    $('#fleetId').val(this._id);
+    /*$('#fleetId').val(this._id);
     $('#userName').text(this.user_name);
     $('#fleetName').val(this.fleet_name);
     $('#papLink').val(this.pap_link);
     $('#ping').val(this.ping);
-    $('#additionalInformation').val(this.additional_information);
+    $('#additionalInformation').val(this.additional_information);*/
   }
 });
 
-Template.modal.events({
+Template.adminViewPendingFleet.events({
+  'click #cancel': function (event, template) {
+    history.go(-1);
+  },
+  'click #approve': function (event, template) {
+    console.log('click');
+    console.log(template.data);
+  },
   'submit form': function (event, template) {
 
-    console.log(this._id);
-    console.log('test');
+    //console.log(this._id);
+    //console.log('test');
+
     /*var userId = Meteor.userId();
     var fleetName = event.target.fleetName.value;
     var papLink = event.target.papLink.value;
     var ping = event.target.ping.value;
     var additionalInformation = event.target.additionalInformation.value;
     var status = 'Pending';
-    var date = new Date(); // current date
-    */
+    var date = new Date(); // current date*/
+
     return false;
   }
 });
