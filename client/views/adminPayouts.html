@@ -21,7 +21,7 @@
         <h3 class="panel-title"><i class=
         "fa fa-shopping-cart"></i> Payout History</h3>
     </div>
-    <table id="datatable" class="table table-condensed table-striped">
+    <table id="datatable" class="table table-striped">
       <thead>
         <tr>
           <th>Date</th>
@@ -35,7 +35,7 @@
         </tr>
       </thead>
       <tbody>
-        {{#each pendingPayouts}}
+        {{#each payouts}}
           <tr class="{{#if eq status 'Pending'}}warning{{else}}successs{{/if}}">
             <td>{{formatDate modified}}</td>
             <td>{{user_name}}</td>
@@ -44,7 +44,7 @@
             <td>{{point_cost}}</td>
             <td>{{isk_cost}} ISK</td>
             <td>{{status}}</td>
-            <td>{{reviewed_by}}</td>
+            <td>{{filled_by}}</td>
           </tr>
         {{/each}}
       </tbody>

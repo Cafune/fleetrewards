@@ -39,12 +39,12 @@ Template.pendingAdminPayouts.helpers({
 
 Template.pendingAdminPayouts.events({
   'click .btn': function (event, template) {
-    var fulfilledBy = Meteor.userId();
+    var filledBy = Meteor.userId();
     var date = new Date(); // current date
     // update payout
     Payouts.update({'_id': this._id}, {$set: {
       'status': 'Filled',
-      'fulfilled_by': fulfilledBy,
+      'filled_by': filledBy,
       'modified': date
     }}, {multi: true});
   }
