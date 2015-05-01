@@ -47,6 +47,7 @@ Template.pendingAdminPayouts.events({
       'filled_by': filledBy,
       'modified': date
     }}, {multi: true});
+    toastr.success('', 'Order Filled');
   }
 });
 
@@ -88,6 +89,7 @@ Template.adminViewPendingFleet.events({
     var adminNotes = template.find('#adminNotes').value;
     var points = Number(template.find('select[id=rewardAmount]').value);
     var date = new Date(); // current date
+    toastr.success('', 'Fleet Approved');
 
     // update fleet
     Fleets.update({'_id': fleet._id}, {$set: {
@@ -123,6 +125,7 @@ Template.adminViewPendingFleet.events({
     var reviewedBy = Meteor.userId();
     var adminNotes =  $('#adminNotes').val();
     var date = new Date(); // current date
+    toastr.warning('', 'Fleet Denied');
 
     // update
     Fleets.update({'_id': fleet._id}, {$set: {
