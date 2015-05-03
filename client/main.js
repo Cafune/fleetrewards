@@ -1,5 +1,8 @@
 // main.js
 
+Template.body.onCreated(function () {
+  $.material.init();
+})
 Template.body.onRendered(function () {
   // request eve IGB trust
   /*if (typeof CCPEVE !== 'undefined') {
