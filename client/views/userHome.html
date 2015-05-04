@@ -40,21 +40,21 @@
       <form class="new-fleet">
         <div class="form-group">
           <label for="fleetname">Fleet Name</label>
-          <input class="form-control" id="fleetName" name="fleetName" placeholder="Name your fleet (required)" type="text" required />
+          <input class="form-control floating-label" id="fleetName" name="fleetName" placeholder="Name your fleet (required)" type="text" required />
         </div>
         <div class="form-group">
             <label for="paplink">PAP Link</label>
-            <input class="form-control" id="papLink" name="papLink" placeholder="Paste your PAP here (required)" type="url" required />
+            <input class="form-control floating-label" id="papLink" name="papLink" placeholder="Paste your PAP here (required)" type="url" required />
         </div>
         <div class="form-group">
             <label for="ping">Ping</label>
-            <textarea class="form-control" id="ping" name="ping" placeholder="Paste ping or fleet purpose (required)" type="text" rows="3" required></textarea>
+            <textarea class="form-control floating-label" id="ping" name="ping" placeholder="Paste ping or fleet purpose (required)" type="text" rows="3" required></textarea>
         </div>
         <div class="form-group">
             <label for="addl">Additional Information</label>
-            <textarea class="form-control" id="additionalInformation" name="additionalInformation" placeholder="Enter any additional information (optional)" type="text" rows="3"></textarea>
+            <textarea class="form-control floating-label" id="additionalInformation" name="additionalInformation" placeholder="Enter any additional information (optional)" type="text" rows="3"></textarea>
         </div>
-        <button class="btn btn-default" type="submit">Submit</button>
+        <button class="btn btn-primary" type="submit">Submit</button>
       </form>
     </div>
   </div>
@@ -160,16 +160,16 @@
       <form role="form" class="form-inline">
         <div class="btn-group btn-group-justified">
               <select id="rewardType" class="form-control" style="width:50%;">
-                  <option value="Doctrine Fittings" selected>Doctrine Fittings</option>
-                  <option value="Hulls">Hulls</option>
-                  <option value="Implant Sets">Implant Sets</option>
-                  <option value="SKINs">SKINs</option>
-                  <option value="ISK">ISK</option>
-                  <option value="Ingame Titles">Ingame Titles</option>
+                  <option value="doctrine" selected>Doctrine Fittings</option>
+                  <option value="hull">Hulls</option>
+                  <option value="implant">Implant Sets</option>
+                  <option value="skin">SKINs</option>
+                  <option value="isk">ISK</option>
+                  <option value="title">Ingame Titles</option>
               </select>
               <select id="rewardFilter" class="form-control" style="width:50%;">
-                <option value="Show All" selected>Show All</option>
-                <option value="Show Affordable">Show Affordable</option>
+                <option value="showAll" selected>Show All</option>
+                <option value="showAffordable">Show Affordable</option>
               </select>
             </div>
         </form>
