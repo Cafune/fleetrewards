@@ -5,9 +5,9 @@
     {{> adminNav}}
     <br>
     <div class="row">
-        <br />
-        <br />
+      <div class="col-md-3">
         {{> rewardGroup }}
+      </div>
         <div class="col-md-3" style="padding-top:50px;padding-left:50px;">
         <button class="btn btn-fab btn-raised btn-success" type="button"><i class="fa fa-plus-square"></i></button>
       </div>
@@ -16,7 +16,6 @@
 </template>
 
 <template name="rewardGroup">
-<div class="col-md-3">
     <div class="panel panel-success">
         <div class="panel-heading">
           <span id="typeEdit"><form role="form" class="form-inline">
@@ -68,5 +67,4 @@
             </tbody>
         </table>
     </div>
-</div>
 </template>
