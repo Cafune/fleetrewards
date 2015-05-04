@@ -1,14 +1,28 @@
-@import url(http://fonts.googleapis.com/css?family=Merriweather+Sans);
-
 /*---MISC OVERRIDES---*/
 
+/* make room for fixed navbar */
+body {
+  padding-top: 80px;
+}
+
+/* bold form labels */
 form label {
   font-weight: bold;
 }
 
-/*center text in <td>*/
+/* vertically center text in a table */
 .table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td {
   vertical-align: inherit;
+}
+
+/*---REWARDS PAGE---*/
+
+#typeEdit {
+  display: none;
+}
+
+#typeName {
+  display: inline;
 }
 
 /*---LOGIN SCREEN---*/
