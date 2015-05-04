@@ -5,9 +5,68 @@
     {{> adminNav}}
     <br>
     <div class="row">
-      <div class="col-md-12">
-        <p>text</p>
+        <br />
+        <br />
+        {{> rewardGroup }}
+        <div class="col-md-3" style="padding-top:50px;padding-left:50px;">
+        <button class="btn btn-fab btn-raised btn-success" type="button"><i class="fa fa-plus-square"></i></button>
       </div>
     </div>
   </div>
+</template>
+
+<template name="rewardGroup">
+<div class="col-md-3">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+          <span id="typeEdit"><form role="form" class="form-inline">
+            <div class="form-group form-group-sm">
+              <input class="form-control input-sm" type="text" label="typeName" placeholder="Reward Type Name" required>
+              <button id="changeName" class="btn btn-primary btn-xs" type="submit">Submit</button>
+            </div>
+          </form></span><span id=
+         "typeName">
+            <h3 class="panel-title"><a class="fa fa-pencil" href="#"
+             type="button"></a> Reward Type<span class=
+            "pull-right"><a class="close fa fa-times" href="#" id="remove"></a></span></h3></span>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>Item Name</td>
+
+                    <td>TypeID/Fitting</td>
+
+                    <td>Cost</td>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>
+                        <a class="text-muted fa fa-trash fa-lg" href="#" id=
+                        "remove"></a> Example
+                    </td>
+
+                    <td>0123456</td>
+
+                    <td>9.50</td>
+                </tr>
+
+                <tr>
+                    <td><input class="form-control" placeholder="Item Name"
+                    type="text" required></td>
+
+                    <td><input class="form-control" placeholder="TypeID/FitXML"
+                    type="text" required></td>
+
+                    <td><button class="btn btn-primary btn-xs" type=
+                    "submit"><i class="fa fa-plus-square"></i> Add
+                    Item</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 </template>
