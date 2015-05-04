@@ -5,7 +5,7 @@
     {{> adminNav}}
     <br>
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-4">
         {{> rewardGroup }}
       </div>
         <div class="col-md-3" style="padding-top:50px;padding-left:50px;">
@@ -18,16 +18,8 @@
 <template name="rewardGroup">
     <div class="panel panel-success">
         <div class="panel-heading">
-          <span id="typeEdit"><form role="form" class="form-inline">
-            <div class="form-group form-group-sm">
-              <input class="form-control input-sm" type="text" label="typeName" placeholder="Reward Type Name" required>
-              <button id="changeName" class="btn btn-primary btn-xs" type="submit">Submit</button>
-            </div>
-          </form></span><span id=
-         "typeName">
-            <h3 class="panel-title"><a class="fa fa-pencil" href="#"
-             type="button"></a> Reward Type<span class=
-            "pull-right"><a class="close fa fa-times" href="#" id="remove"></a></span></h3></span>
+            <h3 class="panel-title"><i class="fa fa-pencil"></i> <span contenteditable="true">Reward Type</span><span class=
+            "pull-right"><a class="close fa fa-times" href="#" id="remove"></a></span></h3>
         </div>
 
         <table class="table table-striped">
