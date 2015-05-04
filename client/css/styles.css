@@ -6,7 +6,7 @@ body {
 }
 
 /* bold form labels */
-form label, td {
+form label {
   font-weight: bold;
 }
 
