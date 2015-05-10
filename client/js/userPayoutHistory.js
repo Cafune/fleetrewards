@@ -15,3 +15,44 @@ Template.userPayoutDatatable.helpers({
     return payouts;
   }
 });
+
+Template.userPayoutStats.helpers({
+
+  fleetChart: function() {
+
+    var userId = Meteor.userId();
+    var fleetsApproved = Fleets.find({'user_id':userId, 'Status':'Approved'}).count();
+    var fleetsDenied = Fleets.find({'user_id':userId, 'Status':'Denied'}).count();
+
+    var data = {
+      labels: ['Fleets Approved', 'Fleets Denied'],
+      series: [fleetsApproved, fleetsDenied]
+    };
+
+    var options = {
+      labelInterpolationFnc: function(value) {
+        return value[0]
+      }
+    };
+
+    var responsiveOptions = [
+      ['screen and (min-width: 640px)', {
+        chartPadding: 30,
+        labelOffset: 100,
+        labelDirection: 'explode',
+        labelInterpolationFnc: function(value) {
+          return value;
+        }
+      }],
+
+      ['screen and (min-width: 1024px)', {
+        labelOffset: 80,
+        chartPadding: 20
+      }]
+    ];
+
+    new Chartist.Pie('.fleet-chart', data, options, responsiveOptions);
+  }
+
+
+});
