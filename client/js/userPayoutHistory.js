@@ -16,43 +16,41 @@ Template.userPayoutDatatable.helpers({
   }
 });
 
-Template.userPayoutStats.helpers({
+Template.userPayoutStats.onRendered(function () {
+  var userId = Meteor.userId();
+  var fleetsApproved = Fleets.find({'user_id': userId, 'status':'Approved'}).count();
+  var fleetsDenied = Fleets.find({'user_id': userId, 'status':'Denied'}).count();
 
-  fleetChart: function() {
+  var data = {
+    labels: ['Fleets Approved', 'Fleets Denied'],
+    series: [fleetsApproved, fleetsDenied]
+  };
 
-    var userId = Meteor.userId();
-    var fleetsApproved = Fleets.find({'user_id':userId, 'Status':'Approved'}).count();
-    var fleetsDenied = Fleets.find({'user_id':userId, 'Status':'Denied'}).count();
+  var options = {
+    labelInterpolationFnc: function(value) {
+      return value[0]
+    }
+  };
 
-    var data = {
-      labels: ['Fleets Approved', 'Fleets Denied'],
-      series: [fleetsApproved, fleetsDenied]
-    };
-
-    var options = {
+  var responsiveOptions = [
+    ['screen and (min-width: 640px)', {
+      chartPadding: 30,
+      labelOffset: 100,
+      labelDirection: 'explode',
       labelInterpolationFnc: function(value) {
-        return value[0]
+        return value;
       }
-    };
+    }],
 
-    var responsiveOptions = [
-      ['screen and (min-width: 640px)', {
-        chartPadding: 30,
-        labelOffset: 100,
-        labelDirection: 'explode',
-        labelInterpolationFnc: function(value) {
-          return value;
-        }
-      }],
+    ['screen and (min-width: 1024px)', {
+      labelOffset: 80,
+      chartPadding: 20
+    }]
+  ];
 
-      ['screen and (min-width: 1024px)', {
-        labelOffset: 80,
-        chartPadding: 20
-      }]
-    ];
+  new Chartist.Pie('.fleet-chart', data, options, responsiveOptions);
+});
 
-    new Chartist.Pie('.fleet-chart', data, options, responsiveOptions);
-  }
-
+Template.userPayoutStats.helpers({
 
 });
