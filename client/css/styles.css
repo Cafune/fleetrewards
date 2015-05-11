@@ -23,6 +23,14 @@ form label {
   font-style: bold;
 }
 
+.ct-chart .ct-series.ct-series-a .ct-area, .ct-chart .ct-series.ct-series-a .ct-slice:not(.ct-donut) {
+  fill: #4caf50;
+}
+
+.ct-chart .ct-series.ct-series-b .ct-area, .ct-chart .ct-series.ct-series-b .ct-slice:not(.ct-donut) {
+  fill: #f44336;
+}
+
 /*---LOGIN SCREEN---*/
 
 .loginScreen {

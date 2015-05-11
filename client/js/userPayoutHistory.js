@@ -25,7 +25,7 @@ Template.userPayoutStats.onRendered(function () {
   var denialPercent = fleetsDenied / fleetsTotal;
 
   var data = {
-    series: [fleetsApproved, fleetsDenied]
+    series: [fleetsApproved,fleetsDenied]
   };
 
   var sum = function(a, b) { return a + b };
