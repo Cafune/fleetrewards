@@ -15,14 +15,12 @@ form label {
   vertical-align: inherit;
 }
 
-/*---REWARDS PAGE---*/
+/*---CHARTIST OVERRIDES---*/
 
-#typeEdit {
-  display: none;
-}
-
-#typeName {
-  display: inline;
+.ct-chart .ct-label {
+  font-size: 120%;
+  fill: white;
+  font-style: bold;
 }
 
 /*---LOGIN SCREEN---*/
