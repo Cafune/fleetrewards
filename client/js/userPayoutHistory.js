@@ -48,7 +48,7 @@ Template.userPayoutStats.onRendered(function () {
     }]
   ];
 
-  new Chartist.Pie('.fleet-chart', data, options, responsiveOptions);
+  new Chartist.Pie('#chart-userFleets', data, options, responsiveOptions);
 });
 
 Template.userPayoutStats.helpers({
