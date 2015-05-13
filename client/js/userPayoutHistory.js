@@ -15,24 +15,3 @@ Template.userPayoutDatatable.helpers({
     return payouts;
   }
 });
-
-Template.userPayoutStats.onRendered(function () {
-  var userId = Meteor.userId();
-  var fleetsApproved = Fleets.find({'user_id': userId, 'status':'Approved'}).count();
-  var fleetsDenied = Fleets.find({'user_id': userId, 'status':'Denied'}).count();
-  var fleetsTotal = fleetsApproved + fleetsDenied;
-  var approvalPercent = fleetsApproved / fleetsTotal;
-  var denialPercent = fleetsDenied / fleetsTotal;
-
-  var data = {
-    series: [fleetsApproved,fleetsDenied]
-  };
-
-  var sum = function(a, b) { return a + b };
-
-  new Chartist.Pie('#chart-userFleets', data, {
-  labelInterpolationFnc: function(value) {
-    return Math.round(value / data.series.reduce(sum) * 100) + '%';
-  }
-});
-});

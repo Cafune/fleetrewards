@@ -3,11 +3,8 @@
   <div class="container-fluid">
     {{> points}}
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-10 col-md-offset-1">
         {{> userPayoutDatatable }}
-      </div>
-      <div class="col-md-4">
-        {{> userPayoutStats}}
       </div>
     </div>
   </div>
@@ -44,54 +41,4 @@
       </tbody>
     </table>
 </div>
-</template>
-
-<template name="userPayoutStats">
-  <div class="panel panel-success">
-    <div class="panel-heading">
-    <h3 class="panel-title">Statistics</h3>
-    </div>
-    <div class="panel-body">
-  <div class="ct-chart ct-golden-section" id="chart-userFleets">
-  </div>
-  <div class="text-center">
-    <h4>Fleets Approved: {{fleetsApproved}} ({{approvalPercent}}%)</h4>
-    <h4>Fleets Denied: {{fleetsDenied}} ({{denialPercent}}%)</h4>
-    <h4> Total Fleets: {{fleetsTotal}}</h4>
-  </div>
-  </div>
-</div>
-  <!--div class="panel panel-success">
-    <div class="panel-heading">
-      <h3 class="panel-title"><i class="fa fa-bar-chart"></i> Personal Stats</h3>
-    </div>
-    <div class="panel-body">
-        <table class="table table-striped">
-          <tr>
-            <td class="text-left"><h2>Total Fleets Submitted:</h2></td>
-            <td class="text-left"><h2><span class="badge points">{{total_fleets}}</span></h2></td>
-          </tr>
-          <tr>
-            <td class="text-left"><h2>Total Fleets Approved:</h2></td>
-            <td class="text-left"><h2><span class="badge points">{{total_fleets_approved}}</span></h2></td>
-          </tr>
-          <tr>
-            <td class="text-left"><h2>Total Points Earned:</h2></td>
-            <td class="text-left"><h2><span class="badge points">{{total_points}}</span></h2></td>
-          </tr>
-          <tr>
-            <td class="text-left"><h2>Total Points Redeemed:</h2></td>
-            <td class="text-left"><h2><span class="badge points">{{total_points_redeemed}}</span></h2></td>
-          </tr>
-          <tr>
-            <td class="text-left"><h2>Total ISK Earned:</h2></td>
-            <td class="text-left"><h2><span class="badge points">{{total_isk}}</span></h2></td>
-          </tr>
-          <tr>
-            <td class="text-left"><h2>Total ISK Redeemed:</h2></td>
-            <td class="text-left"><h2><span class="badge points">{{total_isk_redeemed}}</span></h2></td>
-          </tr>
-        </table>
-    </div>
-  </div-->
 </template>

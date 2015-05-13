@@ -1,0 +1,51 @@
+<template name="userStatistics">
+  {{> navbar }}
+  <div class="container-fluid">
+    {{> points}}
+    <div class="row">
+      <div class="col-md-4">
+        {{> userFleetStats }}
+      </div>
+      <div class="col-md-4">
+        {{> userPointStats }}
+      </div>
+      <div class="col-md-4">
+        <!--{{> userISKStats }}-->
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="userFleetStats">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+    <h3 class="panel-title"><i class="fa fa-pie-chart"></i> Fleets</h3>
+    </div>
+    <div class="panel-body">
+  <div class="ct-chart ct-golden-section" id="chart-userFleets">
+  </div>
+  <div class="text-center">
+    <h4> Total Fleets: {{fleetsTotal}}</h4>
+    <h4>Fleets Approved: {{fleetsApproved}} ({{fleetApprovalPercent}}%)</h4>
+    <h4>Fleets Denied: {{fleetsDenied}} ({{fleetDenialPercent}}%)</h4>
+  </div>
+  </div>
+</div>
+</template>
+
+<template name="userPointStats">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title"><i class="fa fa-line-chart"></i> Points</h3>
+    </div>
+    <div class="panel-body">
+      <div class="ct-chart ct-golden-section" id="chart-userPoints">
+      </div>
+      <div class="text-center">
+        <h4>Points Earned: {{pointsEarned}}</h4>
+        <h4>Points Spent: {{pointsSpent}}</h4>
+        <h4>Points Outstanding: {{pointsOutstanding}}</h4>
+      </div>
+    </div>
+  </div>
+</template>
