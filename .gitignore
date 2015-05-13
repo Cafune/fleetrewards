@@ -3,3 +3,5 @@
 Vagrantfile
 # meteor
 lib/dev.js
+# webstorm
+.idea/
